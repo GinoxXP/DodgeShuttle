@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public SpawnedObject[] spawnedObjects;
+    public GameObject[] spawnedObjects;
 
     private float time;
 
@@ -37,16 +37,16 @@ public class Spawner : MonoBehaviour
 
     void Spawn()
     {
-        for(int i = 0; i < spawnedObjects.Length; i++)
-        {
-            float y = Random.Range(point2.position.y, point1.position.y);
-            Vector2 spawnPosition = new Vector2(point1.position.x, y);
+        int indexSpawned = Random.Range(0, spawnedObjects.Length);
 
-            GameObject obj = Instantiate(spawnedObjects[i].obj, spawnPosition, Quaternion.identity);
-            obj.GetComponent<SpaceObject>().speedMultiplier = speedMultiplier;
+        float y = Random.Range(point2.position.y, point1.position.y);
+        Vector2 spawnPosition = new Vector2(point1.position.x, y);
 
-            break;
-        }
+        GameObject obj = Instantiate(spawnedObjects[indexSpawned],
+                                     spawnPosition,
+                                     Quaternion.identity);
+
+        obj.GetComponent<SpaceObject>().speedMultiplier = speedMultiplier;
     }
 }
 
@@ -54,5 +54,4 @@ public class Spawner : MonoBehaviour
 public struct SpawnedObject
 {
     public GameObject obj;
-    public float rare;
 }

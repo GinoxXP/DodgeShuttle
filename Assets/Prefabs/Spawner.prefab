@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4022255761649366151}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: 4, z: 0}
+  m_LocalPosition: {x: 10, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6342624112840586420}
@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4378843026526841636}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: -4, z: 0}
+  m_LocalPosition: {x: 10, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6342624112840586420}
@@ -106,8 +106,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnedObjects:
-  - obj: {fileID: 5485221432760621505, guid: 17d9bf87a5fe49aaaa27d5156efcb86d, type: 3}
-    rare: 0
+  - {fileID: 5485221432760621505, guid: 17d9bf87a5fe49aaaa27d5156efcb86d, type: 3}
+  - {fileID: 3063195226002331778, guid: fdbc3d59a6dc3c70f91809c8c2e626ce, type: 3}
+  - {fileID: 6900313121548786772, guid: d4c90d96e9d1e827aaf321791eb7fad6, type: 3}
+  - {fileID: 8948299043286764177, guid: 8e04728772a5e73d59a05b9b5fccc62e, type: 3}
+  - {fileID: 5994768413731962377, guid: 3fe3b9b6f04d9bb70809dc442d568710, type: 3}
   divider: 5
   hightMultiplier: 1.002
   speedMultiplier: 1
