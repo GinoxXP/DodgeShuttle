@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
     public bool isBroken;
     public ParticleSystem particleSystem;
 
+    public DistanceCounter distanceCounter;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -75,7 +77,10 @@ public class Player : MonoBehaviour
             Destroy(col.gameObject);
 
             if(isBroken)
+            {
+                distanceCounter.isPause = true;
                 Destroy(gameObject);
+            }
             if(!isBroken)
             {
                 isBroken = true;
