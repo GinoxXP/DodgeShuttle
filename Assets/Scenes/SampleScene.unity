@@ -683,16 +683,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spawner
       objectReference: {fileID: 0}
-    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
-        type: 3}
-      propertyPath: hightMultiplier
-      value: 1.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
-        type: 3}
-      propertyPath: divider
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df85f06eb9e41383a9002f9e20f1ea36, type: 3}
 --- !u!1001 &7170248891339572855
