@@ -112,6 +112,7 @@ MonoBehaviour:
   - {fileID: 8948299043286764177, guid: 8e04728772a5e73d59a05b9b5fccc62e, type: 3}
   - {fileID: 5994768413731962377, guid: 3fe3b9b6f04d9bb70809dc442d568710, type: 3}
   - {fileID: 7497197920944007092, guid: 99d9135d11da7524a8e5f43fcc939329, type: 3}
+  - {fileID: 4431395852987726154, guid: ba47a209cb6096dd79979f14a8719f76, type: 3}
   divider: 3
   hightMultiplier: 1.01
   speedMultiplier: 1
