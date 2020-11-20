@@ -70,6 +70,7 @@ public class Defender : MonoBehaviour
     {
         if(col.tag == "Bullet")
         {
+            spaceObject.Drop();
             Destroy(col.gameObject);
             Destroy(gameObject);
         }

@@ -163,3 +163,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedMultiplier: 1
+  dropItems:
+  - item: {fileID: 2970745928798325630, guid: a4eeea097144c0e998dda9f18265f2b1, type: 3}
+    dropPercent: 10

@@ -87,5 +87,16 @@ public class Player : MonoBehaviour
                 particleSystem.Play();
             }
         }
+
+        if(col.tag == "Repair Kit")
+        {
+            Destroy(col.gameObject);
+
+            if(isBroken)
+            {
+                isBroken = false;
+                particleSystem.Stop();
+            }
+        }
     }
 }
