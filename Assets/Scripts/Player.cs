@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
 
     public DistanceCounter distanceCounter;
 
+    public GameObject gameOverPanel;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -78,6 +80,7 @@ public class Player : MonoBehaviour
 
             if(isBroken)
             {
+                gameOverPanel.SetActive(true);
                 distanceCounter.isPause = true;
                 Destroy(gameObject);
             }
