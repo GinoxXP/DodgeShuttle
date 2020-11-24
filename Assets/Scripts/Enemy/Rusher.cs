@@ -48,7 +48,8 @@ public class Rusher : MonoBehaviour
 
     private void Fire()
     {
-        Instantiate(bullet, transform.position, Quaternion.identity);
+        GameObject bullet = Instantiate(this.bullet, transform.position, Quaternion.identity);
+        bullet.GetComponent<Bullet>().speedMultiplier = spaceObject.speedMultiplier;
         isFire = true;
     }
 
