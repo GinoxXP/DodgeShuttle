@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedMultiplier: 1
+  isGroup: 1
 --- !u!114 &-2111976565869676541
 MonoBehaviour:
   m_ObjectHideFlags: 0

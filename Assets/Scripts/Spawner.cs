@@ -8,9 +8,6 @@ public class Spawner : MonoBehaviour
     private DifficultLevel currentDifficultLevel;
     private int indexDifficultLevel;
 
-    private List<Transform> spawnedObjects = new List<Transform>();
-    public int guaranteedDestroyDistance;
-
     public Transform pointUpBorder;
     public Transform pointDownBorder;
 
@@ -31,9 +28,6 @@ public class Spawner : MonoBehaviour
     void Update()
     {
         SetDifficultLevel();
-
-        DestroyObjects();
-
         if(!currentDifficultLevel.isBossFight)
         {
             ComputeSpeedMultiplier();
@@ -89,8 +83,6 @@ public class Spawner : MonoBehaviour
                                                            Quaternion.identity);
 
                    spawnedObject.GetComponent<SpaceObject>().speedMultiplier = speedMultiplier;
-                   
-                   spawnedObjects.Add(spawnedObject.transform);
 
                    return;
                 }
@@ -101,25 +93,6 @@ public class Spawner : MonoBehaviour
     void ComputeSpeedMultiplier()
     {
         speedMultiplier = (distance / 100) + speedMultiplierStart;
-    }
-
-    void DestroyObjects()
-    {
-        for(int i = 0; i < spawnedObjects.Count; i++)
-        {
-            if(spawnedObjects[i] == null)
-            {
-                spawnedObjects.RemoveAt(i);
-                break;
-            }
-
-            if(Vector3.Distance(transform.position, spawnedObjects[i].position)
-              >= guaranteedDestroyDistance)
-            {
-                Destroy(spawnedObjects[i].gameObject);
-                spawnedObjects.RemoveAt(i);
-            }
-        }
     }
 }
 
