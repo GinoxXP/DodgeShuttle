@@ -6,6 +6,7 @@ public class Spawner : MonoBehaviour
 {
     public DifficultLevel[] difficultLevels;
     private DifficultLevel currentDifficultLevel;
+    private int indexDifficultLevel;
 
     private List<Transform> spawnedObjects = new List<Transform>();
     public int guaranteedDestroyDistance;
@@ -29,6 +30,8 @@ public class Spawner : MonoBehaviour
 
     void Update()
     {
+        SetDifficultLevel();
+
         DestroyObjects();
 
         if(!currentDifficultLevel.isBossFight)
@@ -51,16 +54,27 @@ public class Spawner : MonoBehaviour
         }
     }
 
+    void SetDifficultLevel()
+    {
+        try{
+            if(difficultLevels[indexDifficultLevel+1].startDistance < distance)
+            {
+                currentDifficultLevel = difficultLevels[indexDifficultLevel+1];
+                indexDifficultLevel++;
+            }
+        }
+        catch(System.IndexOutOfRangeException){}
+    }
+
     void Spawn()
     {
         if(!isSpawned)
         {
             isSpawned = true;
 
-            float randomValue = Random.Range(0.0f, 1.0f);
-
             for(int i = 0; i < currentDifficultLevel.spawningObjects.Length; i++)
             {
+                float randomValue = Random.Range(0.0f, 1.0f);
                 var spawningObject = currentDifficultLevel.spawningObjects[i];
                 if(spawningObject.frequencySpawn >= randomValue)
                 {
@@ -75,8 +89,10 @@ public class Spawner : MonoBehaviour
                                                            Quaternion.identity);
 
                    spawnedObject.GetComponent<SpaceObject>().speedMultiplier = speedMultiplier;
-
+                   
                    spawnedObjects.Add(spawnedObject.transform);
+
+                   return;
                 }
             }
         }
@@ -96,7 +112,7 @@ public class Spawner : MonoBehaviour
                 spawnedObjects.RemoveAt(i);
                 break;
             }
-            
+
             if(Vector3.Distance(transform.position, spawnedObjects[i].position)
               >= guaranteedDestroyDistance)
             {
