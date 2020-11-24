@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpaceObject : MonoBehaviour
+public class Drop : MonoBehaviour
 {
-    public float speedMultiplier;
-
     public DropItem[] dropItems;
 
-    public void Drop()
+    public void DropItem()
     {
         float randValue = Random.Range(0.0f, 100.0f);
         for(int i = 0; i < dropItems.Length; i++)

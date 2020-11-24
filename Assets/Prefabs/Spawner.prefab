@@ -105,16 +105,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa0464aff8158ecb8a36db963e633a6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnedObjects:
-  - {fileID: 5485221432760621505, guid: 17d9bf87a5fe49aaaa27d5156efcb86d, type: 3}
-  - {fileID: 3063195226002331778, guid: fdbc3d59a6dc3c70f91809c8c2e626ce, type: 3}
-  - {fileID: 6900313121548786772, guid: d4c90d96e9d1e827aaf321791eb7fad6, type: 3}
-  - {fileID: 8948299043286764177, guid: 8e04728772a5e73d59a05b9b5fccc62e, type: 3}
-  - {fileID: 5994768413731962377, guid: 3fe3b9b6f04d9bb70809dc442d568710, type: 3}
-  - {fileID: 7497197920944007092, guid: 99d9135d11da7524a8e5f43fcc939329, type: 3}
-  - {fileID: 4431395852987726154, guid: ba47a209cb6096dd79979f14a8719f76, type: 3}
-  divider: 3
-  hightMultiplier: 1.02
-  speedMultiplier: 1
-  point1: {fileID: 7262817682714859735}
-  point2: {fileID: 6081893829789402297}
+  difficultLevels:
+  - startDistance: 0
+    spawningObjects:
+    - spawningObject: {fileID: 5485221432760621505, guid: 17d9bf87a5fe49aaaa27d5156efcb86d,
+        type: 3}
+      frequencySpawn: 1
+    isBossFight: 0
+  guaranteedDestroyDistance: 12
+  pointUpBorder: {fileID: 7262817682714859735}
+  pointDownBorder: {fileID: 6081893829789402297}
+  speedMultiplier: 0
+  speedMultiplierStart: 1
+  spawnDelayTime: 3
+  distance: 0

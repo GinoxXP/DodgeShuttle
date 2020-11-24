@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rusher : MonoBehaviour
+public class Defender : MonoBehaviour
 {
     public float speed;
     public float speedAiming;
@@ -18,6 +18,10 @@ public class Rusher : MonoBehaviour
 
     public GameObject bullet;
 
+    public float lifeTime;
+    private float lifeTimer;
+    private bool isAlive = true;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -28,22 +32,32 @@ public class Rusher : MonoBehaviour
 
     void Update()
     {
-        if(player != null)
-            rb.velocity = new Vector2(rb.velocity.x, player.position.y > transform.position.y ? speedAiming : -speedAiming);
-        else
-            rb.velocity = new Vector2(rb.velocity.x, 0);
-
-        if(!isFire)
-            Fire();
-
-        if(isFire)
-            timer += Time.deltaTime;
-
-        if(timer >= timeFireDelay)
+        if(isAlive)
         {
-            timer = 0;
-            isFire = false;
+            if(player != null)
+                rb.velocity = new Vector2(rb.velocity.x, player.position.y > transform.position.y ? speedAiming : -speedAiming);
+            else
+                rb.velocity = new Vector2(rb.velocity.x, 0);
+
+            if(!isFire)
+                Fire();
+
+            if(isFire)
+                timer += Time.deltaTime;
+
+            if(timer >= timeFireDelay)
+            {
+                timer = 0;
+                isFire = false;
+            }
+
+            lifeTimer += Time.deltaTime;
+
+            if(lifeTimer >= lifeTime)
+                isAlive = false;
         }
+        else
+            rb.velocity = new Vector2(speed*3, 0);
     }
 
     private void Fire()
@@ -56,7 +70,7 @@ public class Rusher : MonoBehaviour
     {
         if(col.tag == "Bullet")
         {
-            spaceObject.Drop();
+            //spaceObject.Drop();
             Destroy(col.gameObject);
             Destroy(gameObject);
         }

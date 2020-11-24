@@ -1663,5 +1663,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DestroyZone
       objectReference: {fileID: 0}
+    - target: {fileID: 7170248891976834679, guid: 2fe0bc3fbfcdfd28688c26799491e3dc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fe0bc3fbfcdfd28688c26799491e3dc, type: 3}

@@ -4,54 +4,121 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject[] spawnedObjects;
+    public DifficultLevel[] difficultLevels;
+    private DifficultLevel currentDifficultLevel;
 
-    private float time;
+    private List<Transform> spawnedObjects = new List<Transform>();
+    public int guaranteedDestroyDistance;
 
-    public float divider;
-    private float dividerTime;
-
-    public float hightMultiplier;
+    public Transform pointUpBorder;
+    public Transform pointDownBorder;
 
     public float speedMultiplier;
+    public float speedMultiplierStart;
 
-    public Transform point1;
-    public Transform point2;
+    public float spawnDelayTime;
+    private float spawnDelayTimer;
+    private bool isSpawned;
+
+    public float distance;
+
+    void Start()
+    {
+        currentDifficultLevel = difficultLevels[0];
+    }
 
     void Update()
     {
-        time += Time.deltaTime;
+        DestroyObjects();
 
-        if(time - dividerTime >= divider)
+        if(!currentDifficultLevel.isBossFight)
         {
-            dividerTime = time;
-            if(divider > 0.5f)
-            {
-                divider /= hightMultiplier;
-                speedMultiplier *= hightMultiplier;
-            }
-
+            ComputeSpeedMultiplier();
             Spawn();
+
+            distance += Time.deltaTime;
+        }
+
+        if(isSpawned)
+        {
+            spawnDelayTimer += Time.deltaTime;
+
+            if(spawnDelayTimer >= spawnDelayTime)
+            {
+                isSpawned = false;
+                spawnDelayTimer = 0;
+            }
         }
     }
 
     void Spawn()
     {
-        int indexSpawned = Random.Range(0, spawnedObjects.Length);
+        if(!isSpawned)
+        {
+            isSpawned = true;
 
-        float y = Random.Range(point2.position.y, point1.position.y);
-        Vector2 spawnPosition = new Vector2(point1.position.x, y);
+            float randomValue = Random.Range(0.0f, 1.0f);
 
-        GameObject obj = Instantiate(spawnedObjects[indexSpawned],
-                                     spawnPosition,
-                                     Quaternion.identity);
+            for(int i = 0; i < currentDifficultLevel.spawningObjects.Length; i++)
+            {
+                var spawningObject = currentDifficultLevel.spawningObjects[i];
+                if(spawningObject.frequencySpawn >= randomValue)
+                {
+                    float yRandom = Random.Range(pointUpBorder.position.y,
+                                                 pointDownBorder.position.y);
 
-        obj.GetComponent<SpaceObject>().speedMultiplier = speedMultiplier;
+                    Vector3 spawnPosition = new Vector3(pointUpBorder.position.x,
+                                                        yRandom);
+
+                    GameObject spawnedObject = Instantiate(spawningObject.spawningObject,
+                                                           spawnPosition,
+                                                           Quaternion.identity);
+
+                   spawnedObject.GetComponent<SpaceObject>().speedMultiplier = speedMultiplier;
+
+                   spawnedObjects.Add(spawnedObject.transform);
+                }
+            }
+        }
+    }
+
+    void ComputeSpeedMultiplier()
+    {
+        speedMultiplier = (distance / 100) + speedMultiplierStart;
+    }
+
+    void DestroyObjects()
+    {
+        for(int i = 0; i < spawnedObjects.Count; i++)
+        {
+            if(spawnedObjects[i] == null)
+            {
+                spawnedObjects.RemoveAt(i);
+                break;
+            }
+            
+            if(Vector3.Distance(transform.position, spawnedObjects[i].position)
+              >= guaranteedDestroyDistance)
+            {
+                Destroy(spawnedObjects[i].gameObject);
+                spawnedObjects.RemoveAt(i);
+            }
+        }
     }
 }
 
 [System.Serializable]
-public struct SpawnedObject
+public struct SpawningObject
 {
-    public GameObject obj;
+    public GameObject spawningObject;
+    [Range(0,1)]
+    public float frequencySpawn;
+}
+
+[System.Serializable]
+public struct DifficultLevel
+{
+    public int startDistance;
+    public SpawningObject[] spawningObjects;
+    public bool isBossFight;
 }

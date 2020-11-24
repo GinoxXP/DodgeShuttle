@@ -19,7 +19,7 @@ public class Asteroid : MonoBehaviour
     {
         if(col.tag == "Bullet")
         {
-            spaceObject.Drop();
+            //spaceObject.Drop();
             Destroy(col.gameObject);
             Destroy(gameObject);
         }
