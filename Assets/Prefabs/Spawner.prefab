@@ -175,9 +175,15 @@ MonoBehaviour:
         type: 3}
       frequencySpawn: 0.2
     isBossFight: 0
+  - startDistance: 120
+    spawningObjects:
+    - spawningObject: {fileID: 8150391337113146159, guid: 6dd44d1730b8ec05b824bccd6a7d2eb5,
+        type: 3}
+      frequencySpawn: 1
+    isBossFight: 1
   pointUpBorder: {fileID: 7262817682714859735}
   pointDownBorder: {fileID: 6081893829789402297}
   speedMultiplier: 0
   speedMultiplierStart: 1
-  spawnDelayTime: 3
+  spawnDelayTime: 1.5
   distance: 0

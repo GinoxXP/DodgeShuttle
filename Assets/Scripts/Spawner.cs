@@ -20,6 +20,8 @@ public class Spawner : MonoBehaviour
 
     public float distance;
 
+    private bool isBossSpawned;
+
     void Start()
     {
         currentDifficultLevel = difficultLevels[0];
@@ -34,6 +36,14 @@ public class Spawner : MonoBehaviour
             Spawn();
 
             distance += Time.deltaTime;
+        }
+        else
+        {
+            if(!isBossSpawned)
+            {
+                Spawn();
+                isBossSpawned = true;
+            }
         }
 
         if(isSpawned)
@@ -62,7 +72,7 @@ public class Spawner : MonoBehaviour
 
     void Spawn()
     {
-        if(!isSpawned)
+        if(!isSpawned || currentDifficultLevel.isBossFight)
         {
             isSpawned = true;
 
