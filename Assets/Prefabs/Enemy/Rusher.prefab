@@ -145,11 +145,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 467325231771944e7bfd80fa6f91ee85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  speedAiming: 2
+  speed: 1
+  speedAiming: 3
   spaceObject: {fileID: 7497197920944007103}
-  timeFireDelay: 1
+  timeFireDelay: 0.5
   bullet: {fileID: 473367469029062732, guid: 12f964bf528cdc4d7ad1baba0eee298d, type: 3}
+  fireCountBeforeRush: 3
 --- !u!114 &7497197920944007103
 MonoBehaviour:
   m_ObjectHideFlags: 0
