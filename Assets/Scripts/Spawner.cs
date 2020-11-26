@@ -22,6 +22,8 @@ public class Spawner : MonoBehaviour
 
     private bool isBossSpawned;
 
+    private GameObject boss;
+
     void Start()
     {
         currentDifficultLevel = difficultLevels[0];
@@ -44,6 +46,12 @@ public class Spawner : MonoBehaviour
                 Spawn();
                 isBossSpawned = true;
             }
+            
+            if(boss == null)
+            {
+                SetNextDifficultLevel();
+                isBossSpawned = false;
+            }
         }
 
         if(isSpawned)
@@ -56,6 +64,12 @@ public class Spawner : MonoBehaviour
                 spawnDelayTimer = 0;
             }
         }
+    }
+
+    void SetNextDifficultLevel()
+    {
+        indexDifficultLevel++;
+        currentDifficultLevel = difficultLevels[indexDifficultLevel];
     }
 
     void SetDifficultLevel()
@@ -92,9 +106,13 @@ public class Spawner : MonoBehaviour
                                                            spawnPosition,
                                                            Quaternion.identity);
 
-                   spawnedObject.GetComponent<SpaceObject>().speedMultiplier = speedMultiplier;
+                    spawnedObject.GetComponent<SpaceObject>().speedMultiplier = speedMultiplier;
 
-                   return;
+                    if(currentDifficultLevel.isBossFight)
+                        boss = spawnedObject;
+
+
+                    return;
                 }
             }
         }
