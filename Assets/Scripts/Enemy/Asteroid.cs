@@ -9,6 +9,8 @@ public class Asteroid : MonoBehaviour
     private Rigidbody2D rb;
     public SpaceObject spaceObject;
 
+    public Drop drop;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -19,7 +21,7 @@ public class Asteroid : MonoBehaviour
     {
         if(col.tag == "Bullet")
         {
-            //spaceObject.Drop();
+            drop.DropItem(spaceObject.speedMultiplier);
             Destroy(col.gameObject);
             Destroy(gameObject);
         }

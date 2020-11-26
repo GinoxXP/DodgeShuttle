@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7497197920944007091}
   - component: {fileID: 7497197920944007102}
   - component: {fileID: 7497197920944007103}
+  - component: {fileID: 8869844397391535855}
   m_Layer: 0
   m_Name: Rusher
   m_TagString: Enemy
@@ -151,6 +152,7 @@ MonoBehaviour:
   timeFireDelay: 0.5
   bullet: {fileID: 473367469029062732, guid: 12f964bf528cdc4d7ad1baba0eee298d, type: 3}
   fireCountBeforeRush: 3
+  drop: {fileID: 8869844397391535855}
 --- !u!114 &7497197920944007103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,3 +167,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedMultiplier: 1
   isGroup: 0
+--- !u!114 &8869844397391535855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7497197920944007092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2628408120e7bdbef841514e481715ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropItems:
+  - item: {fileID: 2970745928798325630, guid: a4eeea097144c0e998dda9f18265f2b1, type: 3}
+    dropFrequency: 0.1

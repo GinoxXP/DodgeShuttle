@@ -23,6 +23,8 @@ public class Rusher : MonoBehaviour
 
     private bool isRush;
 
+    public Drop drop;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -86,7 +88,7 @@ public class Rusher : MonoBehaviour
     {
         if(col.tag == "Bullet")
         {
-            //spaceObject.Drop();
+            drop.DropItem(spaceObject.speedMultiplier);
             Destroy(col.gameObject);
             Destroy(gameObject);
         }

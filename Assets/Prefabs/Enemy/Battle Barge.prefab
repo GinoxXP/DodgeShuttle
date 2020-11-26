@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8150391337113146131}
   - component: {fileID: 8150391337113146132}
   - component: {fileID: 8150391337113146133}
+  - component: {fileID: 6822813639384074108}
   m_Layer: 0
   m_Name: Battle Barge
   m_TagString: Enemy
@@ -156,6 +157,7 @@ MonoBehaviour:
   waypointCount: 6
   leftUpCorner: {x: 10, y: 7}
   rightDownCorner: {x: 12, y: -7}
+  drop: {fileID: 6822813639384074108}
 --- !u!114 &8150391337113146133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,6 +172,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedMultiplier: 1
   isGroup: 0
+--- !u!114 &6822813639384074108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8150391337113146159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2628408120e7bdbef841514e481715ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropItems:
+  - item: {fileID: 2759389055107323668, guid: 71c48a0dddba3bc53b6d476cadb71214, type: 3}
+    dropFrequency: 1
 --- !u!1 &8150391337277012951
 GameObject:
   m_ObjectHideFlags: 0

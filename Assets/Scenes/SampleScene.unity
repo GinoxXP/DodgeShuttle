@@ -1729,6 +1729,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4039643393081827033, guid: 35065f2c94092ee3fb44791be72b55fd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9197090000176517974, guid: 35065f2c94092ee3fb44791be72b55fd,
         type: 3}
       propertyPath: distanceCounter

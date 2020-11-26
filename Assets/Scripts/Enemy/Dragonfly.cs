@@ -18,6 +18,8 @@ public class Dragonfly : MonoBehaviour
     public Vector2 leftUpCorner;
     public Vector2 rightDownCorner;
 
+    public Drop drop;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -74,6 +76,7 @@ public class Dragonfly : MonoBehaviour
     {
         if(col.tag == "Bullet")
         {
+            drop.DropItem(spaceObject.speedMultiplier);
             Destroy(col.gameObject);
             Destroy(gameObject);
         }

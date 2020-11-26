@@ -26,6 +26,8 @@ public class BattleBarge : MonoBehaviour
     public Vector2 leftUpCorner;
     public Vector2 rightDownCorner;
 
+    public Drop drop;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -102,7 +104,10 @@ public class BattleBarge : MonoBehaviour
 
             hp--;
             if(hp <= 0)
+            {
+                drop.DropItem(spaceObject.speedMultiplier);
                 Destroy(gameObject);
+            }
 
             SetStatus();
         }
