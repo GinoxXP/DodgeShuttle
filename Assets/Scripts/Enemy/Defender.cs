@@ -22,6 +22,8 @@ public class Defender : MonoBehaviour
     private float lifeTimer;
     private bool isAlive = true;
 
+    public Drop drop;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -62,7 +64,8 @@ public class Defender : MonoBehaviour
 
     private void Fire()
     {
-        Instantiate(bullet, transform.position, Quaternion.identity);
+        GameObject bullet = Instantiate(this.bullet, transform.position, Quaternion.identity);
+        bullet.GetComponent<Bullet>().speedMultiplier = spaceObject.speedMultiplier;
         isFire = true;
     }
 
@@ -70,7 +73,7 @@ public class Defender : MonoBehaviour
     {
         if(col.tag == "Bullet")
         {
-            spaceObject.Drop();
+            drop.DropItem(spaceObject.speedMultiplier);
             Destroy(col.gameObject);
             Destroy(gameObject);
         }

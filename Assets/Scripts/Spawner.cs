@@ -4,54 +4,142 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject[] spawnedObjects;
+    public DifficultLevel[] difficultLevels;
+    private DifficultLevel currentDifficultLevel;
+    private int indexDifficultLevel;
 
-    private float time;
-
-    public float divider;
-    private float dividerTime;
-
-    public float hightMultiplier;
+    public Transform pointUpBorder;
+    public Transform pointDownBorder;
 
     public float speedMultiplier;
+    public float speedMultiplierStart;
 
-    public Transform point1;
-    public Transform point2;
+    public float spawnDelayTime;
+    private float spawnDelayTimer;
+    private bool isSpawned;
+
+    public float distance;
+
+    private bool isBossSpawned;
+
+    private GameObject boss;
+
+    public bool isPause;
+    void Start()
+    {
+        currentDifficultLevel = difficultLevels[0];
+    }
 
     void Update()
     {
-        time += Time.deltaTime;
-
-        if(time - dividerTime >= divider)
+        if(isPause)
+            return;
+            
+        SetDifficultLevel();
+        if(!currentDifficultLevel.isBossFight)
         {
-            dividerTime = time;
-            if(divider > 0.5f)
+            ComputeSpeedMultiplier();
+            Spawn();
+
+            distance += Time.deltaTime;
+        }
+        else
+        {
+            if(!isBossSpawned)
             {
-                divider /= hightMultiplier;
-                speedMultiplier *= hightMultiplier;
+                Spawn();
+                isBossSpawned = true;
             }
 
-            Spawn();
+            if(boss == null)
+            {
+                SetNextDifficultLevel();
+                isBossSpawned = false;
+            }
         }
+
+        if(isSpawned)
+        {
+            spawnDelayTimer += Time.deltaTime;
+
+            if(spawnDelayTimer >= spawnDelayTime)
+            {
+                isSpawned = false;
+                spawnDelayTimer = 0;
+            }
+        }
+    }
+
+    void SetNextDifficultLevel()
+    {
+        indexDifficultLevel++;
+        currentDifficultLevel = difficultLevels[indexDifficultLevel];
+    }
+
+    void SetDifficultLevel()
+    {
+        try{
+            if(difficultLevels[indexDifficultLevel+1].startDistance < distance)
+            {
+                currentDifficultLevel = difficultLevels[indexDifficultLevel+1];
+                indexDifficultLevel++;
+            }
+        }
+        catch(System.IndexOutOfRangeException){}
     }
 
     void Spawn()
     {
-        int indexSpawned = Random.Range(0, spawnedObjects.Length);
+        if(!isSpawned || currentDifficultLevel.isBossFight)
+        {
+            isSpawned = true;
 
-        float y = Random.Range(point2.position.y, point1.position.y);
-        Vector2 spawnPosition = new Vector2(point1.position.x, y);
+            for(int i = 0; i < currentDifficultLevel.spawningObjects.Length; i++)
+            {
+                float randomValue = Random.Range(0.0f, 1.0f);
+                var spawningObject = currentDifficultLevel.spawningObjects[i];
+                if(spawningObject.frequencySpawn >= randomValue)
+                {
+                    float yRandom = Random.Range(pointUpBorder.position.y,
+                                                 pointDownBorder.position.y);
 
-        GameObject obj = Instantiate(spawnedObjects[indexSpawned],
-                                     spawnPosition,
-                                     Quaternion.identity);
+                    Vector3 spawnPosition = new Vector3(pointUpBorder.position.x,
+                                                        yRandom);
 
-        obj.GetComponent<SpaceObject>().speedMultiplier = speedMultiplier;
+                    GameObject spawnedObject = Instantiate(spawningObject.spawningObject,
+                                                           spawnPosition,
+                                                           Quaternion.identity);
+
+                    spawnedObject.GetComponent<SpaceObject>().speedMultiplier = speedMultiplier;
+
+                    if(currentDifficultLevel.isBossFight)
+                        boss = spawnedObject;
+
+
+                    return;
+                }
+            }
+        }
+    }
+
+    void ComputeSpeedMultiplier()
+    {
+        speedMultiplier = (distance / 100) + speedMultiplierStart;
     }
 }
 
 [System.Serializable]
-public struct SpawnedObject
+public struct SpawningObject
 {
-    public GameObject obj;
+    public GameObject spawningObject;
+    [Range(0,1)]
+    public float frequencySpawn;
+}
+
+[System.Serializable]
+public struct DifficultLevel
+{
+    public int startDistance;
+    public SpawningObject[] spawningObjects;
+    public bool isBossFight;
 }

@@ -4,19 +4,70 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 2558143331689946202
-    second: shuttles_0
+    second: shuttle_player_legacy
   - first:
       213: -858431037932241401
-    second: shuttles_1
+    second: asteroid
   - first:
       213: -6871975412839433954
-    second: shuttles_2
+    second: swarm_unit_legacy
   - first:
       213: 7419740110421288279
-    second: shuttles_3
+    second: rusher_legacy
   - first:
       213: -7993748044315318621
-    second: shuttles_4
+    second: deffender_legacy
+  - first:
+      213: -9054297478603384347
+    second: shuttle_player_legacy
+  - first:
+      213: 7466639281942291550
+    second: asteroid
+  - first:
+      213: -5012102097781483192
+    second: swarm_unit_legacy
+  - first:
+      213: -7163049649067485869
+    second: rusher_legacy
+  - first:
+      213: 80503580530045855
+    second: deffender_legacy
+  - first:
+      213: 7162675773028797186
+    second: swarm_unit
+  - first:
+      213: -2155221875167679985
+    second: rusher
+  - first:
+      213: 5871418754670665757
+    second: deffender
+  - first:
+      213: -1820879173208185078
+    second: dragonfly
+  - first:
+      213: 8652314766821002267
+    second: battle_barge
+  - first:
+      213: -5207464381489117028
+    second: turret
+  - first:
+      213: 2681133455872335108
+    second: shuttle_player_mk1
+  - first:
+      213: 4685793988032596483
+    second: shuttle_player_mk1_dual
+  - first:
+      213: 1367341606335417959
+    second: shuttle_player_mk1_triple
+  - first:
+      213: -7892584623208246474
+    second: shuttle_player_mk2
+  - first:
+      213: -276844294796835590
+    second: shuttle_player_mk2_dual
+  - first:
+      213: 4582906721948326252
+    second: shuttle_player_mk2_triple
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -102,106 +153,358 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: shuttles_0
+      name: shuttle_player_legacy
       rect:
         serializedVersion: 2
         x: 0
-        y: 3
+        y: 565
         width: 115
         height: 92
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a5cd9e97ec9508320800000000000000
-      internalID: 2558143331689946202
+      spriteID: 5e951293a6ca85280800000000000000
+      internalID: -9054297478603384347
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shuttles_1
+      name: asteroid
       rect:
         serializedVersion: 2
         x: 136
-        y: 0
+        y: 562
         width: 99
         height: 95
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 70ef0e7e48d3614f0800000000000000
-      internalID: -858431037932241401
+      spriteID: e54e522fdd4de9760800000000000000
+      internalID: 7466639281942291550
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shuttles_2
+      name: swarm_unit_legacy
       rect:
         serializedVersion: 2
         x: 249
-        y: 3
+        y: 565
         width: 65
         height: 92
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e19bc7475c6d1a0a0800000000000000
-      internalID: -6871975412839433954
+      spriteID: 8499eb382bf617ab0800000000000000
+      internalID: -5012102097781483192
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shuttles_3
+      name: rusher_legacy
       rect:
         serializedVersion: 2
         x: 343
-        y: 3
+        y: 565
         width: 64
         height: 92
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 755e067a15638f660800000000000000
-      internalID: 7419740110421288279
+      spriteID: 35598deab4cb79c90800000000000000
+      internalID: -7163049649067485869
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shuttles_4
+      name: deffender_legacy
       rect:
         serializedVersion: 2
         x: 423
-        y: 3
+        y: 565
         width: 79
         height: 92
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a6ac92a180801190800000000000000
-      internalID: -7993748044315318621
+      spriteID: f93f3a874910e1100800000000000000
+      internalID: 80503580530045855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swarm_unit
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 456
+        width: 64
+        height: 92
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20b8da48aafe66360800000000000000
+      internalID: 7162675773028797186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rusher
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 463
+        width: 89
+        height: 81
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0aaa769f1d1712e0800000000000000
+      internalID: -2155221875167679985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deffender
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 455
+        width: 69
+        height: 94
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1026bfcf387b7150800000000000000
+      internalID: 5871418754670665757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragonfly
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 455
+        width: 169
+        height: 93
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a07e4061a00fab6e0800000000000000
+      internalID: -1820879173208185078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: battle_barge
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 239
+        width: 390
+        height: 198
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1c8b314072331870800000000000000
+      internalID: 8652314766821002267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turret
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 403
+        width: 66
+        height: 25
+      alignment: 9
+      pivot: {x: 0.75, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9887d04cbe5bb7b0800000000000000
+      internalID: -5207464381489117028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shuttle_player_mk1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 112
+        width: 118
+        height: 92
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40d9fa04cac453520800000000000000
+      internalID: 2681133455872335108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shuttle_player_mk1_dual
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 112
+        width: 115
+        height: 92
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30a08534ec8470140800000000000000
+      internalID: 4685793988032596483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shuttle_player_mk1_triple
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 112
+        width: 124
+        height: 92
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76e0c3c42f5c9f210800000000000000
+      internalID: 1367341606335417959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shuttle_player_mk2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1
+        width: 123
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63356f51a18e77290800000000000000
+      internalID: -7892584623208246474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shuttle_player_mk2_dual
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 0
+        width: 115
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af48a86a493782cf0800000000000000
+      internalID: -276844294796835590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shuttle_player_mk2_triple
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 0
+        width: 124
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c69da70e161c99f30800000000000000
+      internalID: 4582906721948326252
       vertices: []
       indices: 
       edges: []

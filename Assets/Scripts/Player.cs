@@ -10,8 +10,6 @@ public class Player : MonoBehaviour
     private Vector2 velocity;
     private Rigidbody2D rb;
 
-    public GameObject bullet;
-
     public float fireDelayTime;
     private float fireDelayTimer;
     private bool isFire;
@@ -21,9 +19,15 @@ public class Player : MonoBehaviour
     public bool isBroken;
     public ParticleSystem particleSystem;
 
-    public DistanceCounter distanceCounter;
+    public bool isImmunity;
+    public GameObject shield;
+    public float immunityTime;
+    private float immunityTimer;
 
-    public GameObject gameOverPanel;
+    public GameObject nextGenerationShuttle;
+
+    public Weapon[] weapons;
+
 
     void Start()
     {
@@ -44,6 +48,9 @@ public class Player : MonoBehaviour
                 isFire = false;
             }
         }
+
+        if(isImmunity)
+            ComputeImmunity();
     }
 
     private void Move()
@@ -56,7 +63,9 @@ public class Player : MonoBehaviour
 
     private void Fire()
     {
-        Instantiate(bullet, transform.position, Quaternion.identity);
+        for(int i = 0; i < weapons.Length; i++)
+            weapons[i].Fire();
+
         isFire = true;
     }
 
@@ -72,33 +81,46 @@ public class Player : MonoBehaviour
                 Fire();
     }
 
+    public void SetStatus()
+    {
+        if(isBroken)
+            particleSystem.Play();
+        else
+            particleSystem.Stop();
+    }
+
+    void ComputeImmunity()
+    {
+        immunityTimer += Time.deltaTime;
+
+        shield.SetActive(true);
+
+        if(immunityTimer >= immunityTime)
+        {
+            isImmunity = false;
+            immunityTimer = 0;
+
+            shield.SetActive(false);
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D col)
     {
         if(col.tag == "Enemy")
         {
             Destroy(col.gameObject);
 
-            if(isBroken)
+            if(!isImmunity)
             {
-                gameOverPanel.SetActive(true);
-                distanceCounter.isPause = true;
-                Destroy(gameObject);
-            }
-            if(!isBroken)
-            {
-                isBroken = true;
-                particleSystem.Play();
-            }
-        }
-
-        if(col.tag == "Repair Kit")
-        {
-            Destroy(col.gameObject);
-
-            if(isBroken)
-            {
-                isBroken = false;
-                particleSystem.Stop();
+                if(isBroken)
+                {
+                    Destroy(gameObject);
+                }
+                if(!isBroken)
+                {
+                    isBroken = true;
+                    SetStatus();
+                }
             }
         }
     }
