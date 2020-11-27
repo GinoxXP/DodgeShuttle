@@ -24,6 +24,7 @@ public class Spawner : MonoBehaviour
 
     private GameObject boss;
 
+    public bool isPause;
     void Start()
     {
         currentDifficultLevel = difficultLevels[0];
@@ -31,6 +32,9 @@ public class Spawner : MonoBehaviour
 
     void Update()
     {
+        if(isPause)
+            return;
+            
         SetDifficultLevel();
         if(!currentDifficultLevel.isBossFight)
         {
@@ -46,7 +50,7 @@ public class Spawner : MonoBehaviour
                 Spawn();
                 isBossSpawned = true;
             }
-            
+
             if(boss == null)
             {
                 SetNextDifficultLevel();

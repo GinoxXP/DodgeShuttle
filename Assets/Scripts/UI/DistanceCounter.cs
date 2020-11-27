@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class DistanceCounter : MonoBehaviour
 {
     public Text text;
-    private float time;
+    public Spawner spawner;
 
     public bool isPause;
 
@@ -14,8 +14,7 @@ public class DistanceCounter : MonoBehaviour
     {
         if(!isPause)
         {
-            time += Time.deltaTime;
-            text.text = System.Math.Round(time, 2).ToString();
+            text.text = System.Math.Round(spawner.distance, 2).ToString();
         }
     }
 }
