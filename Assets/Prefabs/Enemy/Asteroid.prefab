@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f940ffdba6a6be03dbb70ba9ae532b87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: {x: -3, y: 0, z: 0}
   spaceObject: {fileID: -562824017831050030}
   drop: {fileID: -2082069740143534630}
 --- !u!114 &-562824017831050030

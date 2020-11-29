@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Asteroid : MonoBehaviour
 {
-    public float speed;
+    public Vector3 speed;
 
     private Rigidbody2D rb;
     public SpaceObject spaceObject;
@@ -14,7 +14,7 @@ public class Asteroid : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = new Vector2(-speed * spaceObject.speedMultiplier, 0);
+        rb.velocity = speed;
     }
 
     void OnTriggerEnter2D(Collider2D col)
