@@ -7,7 +7,7 @@ public class Weapon : MonoBehaviour
     public GameObject bullet;
     public SpaceObject spaceObject;
 
-    public int bulletSpeed;
+    public float bulletSpeed;
 
     public void Fire()
     {
