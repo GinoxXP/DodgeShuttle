@@ -68,6 +68,30 @@ TextureImporter:
   - first:
       213: 4582906721948326252
     second: shuttle_player_mk2_triple
+  - first:
+      213: -9054297478603384347
+    second: space_taker
+  - first:
+      213: 7466639281942291550
+    second: mine_core
+  - first:
+      213: -5012102097781483192
+    second: shuttles_2
+  - first:
+      213: -7163049649067485869
+    second: asteroid
+  - first:
+      213: 80503580530045855
+    second: shuttles_4
+  - first:
+      213: -7306746340587236403
+    second: shuttles_17
+  - first:
+      213: 2558143331689946202
+    second: shuttles_0
+  - first:
+      213: 2808564263240223317
+    second: shuttles_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -153,13 +177,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: shuttle_player_legacy
+      name: space_taker
       rect:
         serializedVersion: 2
         x: 0
-        y: 565
-        width: 115
-        height: 92
+        y: 677
+        width: 497
+        height: 254
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,13 +198,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: asteroid
+      name: mine_core
       rect:
         serializedVersion: 2
-        x: 136
-        y: 562
-        width: 99
-        height: 95
+        x: 409
+        y: 312
+        width: 51
+        height: 51
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,34 +219,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: swarm_unit_legacy
+      name: asteroid
       rect:
         serializedVersion: 2
-        x: 249
-        y: 565
-        width: 65
-        height: 92
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8499eb382bf617ab0800000000000000
-      internalID: -5012102097781483192
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rusher_legacy
-      rect:
-        serializedVersion: 2
-        x: 343
-        y: 565
-        width: 64
-        height: 92
+        x: 136
+        y: 562
+        width: 99
+        height: 96
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,34 +240,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: deffender_legacy
-      rect:
-        serializedVersion: 2
-        x: 423
-        y: 565
-        width: 79
-        height: 92
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f93f3a874910e1100800000000000000
-      internalID: 80503580530045855
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: swarm_unit
       rect:
         serializedVersion: 2
         x: 0
         y: 456
         width: 64
-        height: 92
+        height: 93
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -285,7 +267,7 @@ TextureImporter:
         x: 82
         y: 463
         width: 89
-        height: 81
+        height: 82
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -325,7 +307,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 274
-        y: 455
+        y: 456
         width: 169
         height: 93
       alignment: 0
@@ -367,11 +349,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 394
-        y: 403
+        y: 404
         width: 66
-        height: 25
-      alignment: 9
-      pivot: {x: 0.75, y: 0.5}
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
