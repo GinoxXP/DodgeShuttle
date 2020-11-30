@@ -19,7 +19,7 @@
                     "id": "7891e90e-bf22-4075-b8fa-82bd88d1510b",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "Hold"
                 }
             ],
             "bindings": [

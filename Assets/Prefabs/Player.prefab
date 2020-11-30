@@ -485,7 +485,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  fireDelayTime: 0.7
+  fireDelayTime: 0.5
   spaceObject: {fileID: 2804124363462492882}
   isBroken: 0
   particleSystem: {fileID: 5830610118354988138}
@@ -5738,7 +5738,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  fireDelayTime: 0.5
+  fireDelayTime: 0.3
   spaceObject: {fileID: 8347512277269164199}
   isBroken: 0
   particleSystem: {fileID: 7754219035938722686}
@@ -16074,7 +16074,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 12
-  fireDelayTime: 0.6
+  fireDelayTime: 0.4
   spaceObject: {fileID: 6072517716711690508}
   isBroken: 0
   particleSystem: {fileID: 3576343004485237504}
