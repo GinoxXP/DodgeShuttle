@@ -88,10 +88,13 @@ TextureImporter:
     second: shuttles_17
   - first:
       213: 2558143331689946202
-    second: shuttles_0
+    second: torpedo
   - first:
       213: 2808564263240223317
-    second: shuttles_1
+    second: torpedo_activated
+  - first:
+      213: 5071349404493964823
+    second: hexon
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -487,6 +490,69 @@ TextureImporter:
       bones: []
       spriteID: c69da70e161c99f30800000000000000
       internalID: 4582906721948326252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: torpedo
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 577
+        width: 114
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5cd9e97ec9508320800000000000000
+      internalID: 2558143331689946202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: torpedo_activated
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 574
+        width: 106
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55a4a4721560af620800000000000000
+      internalID: 2808564263240223317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hexon
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1006
+        width: 236
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71660ca0a6d016640800000000000000
+      internalID: 5071349404493964823
       vertices: []
       indices: 
       edges: []

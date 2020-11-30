@@ -149,19 +149,19 @@ public class SpaceTaker : MonoBehaviour
 
     void SetStatus()
     {
-        if(hp == 80)
+        if(hp <= 80)
             firePoint1.Play();
 
-        if(hp == 60)
+        if(hp <= 60)
             firePoint2.Play();
 
-        if(hp == 40)
+        if(hp <= 40)
             firePoint3.Play();
 
-        if(hp == 20)
+        if(hp <= 20)
             firePoint4.Play();
 
-        if(hp == 10)
+        if(hp <= 10)
             firePoint5.Play();
     }
 

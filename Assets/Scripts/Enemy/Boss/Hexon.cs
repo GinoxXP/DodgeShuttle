@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BattleBarge : MonoBehaviour
+public class Hexon : MonoBehaviour
 {
     public float speed;
 
@@ -12,21 +12,36 @@ public class BattleBarge : MonoBehaviour
 
     public int hp;
 
+    [Space]
     public Turret turret1;
     public Turret turret2;
 
+    [Space]
     public float timeFireDelay;
     private float timerFireDelay;
     private bool isFire;
 
+    [Space]
+    public GameObject torpedo;
+    public float timeTorpedoDelay;
+    private float timerTorpedoDelay;
+    private bool isTorpedo;
+
+    [Space]
     public int waypointCount;
     private Vector3[] waypoints;
     private int indexWaypoint;
 
+    [Space]
     public Vector2 leftUpCorner;
     public Vector2 rightDownCorner;
 
     public Drop drop;
+
+    [Space]
+    public float timeDischargeDelay;
+    private float timerDischargeDelay;
+    private bool isDischarge;
 
     void Start()
     {
@@ -36,17 +51,11 @@ public class BattleBarge : MonoBehaviour
 
     void Update()
     {
-        if(!isFire)
-            Fire();
+        TryFire();
+        TryThrowTorpedo();
 
-        if(isFire)
-            timerFireDelay += Time.deltaTime;
-
-        if(timerFireDelay >= timeFireDelay)
-        {
-            timerFireDelay = 0;
-            isFire = false;
-        }
+        if(hp < 100)
+            TryDischarge();
 
         Move();
     }
@@ -79,6 +88,21 @@ public class BattleBarge : MonoBehaviour
         }
     }
 
+    void TryFire()
+    {
+        if(!isFire)
+            Fire();
+
+        if(isFire)
+            timerFireDelay += Time.deltaTime;
+
+        if(timerFireDelay >= timeFireDelay)
+        {
+            timerFireDelay = 0;
+            isFire = false;
+        }
+    }
+
     void Fire()
     {
         isFire = true;
@@ -87,13 +111,65 @@ public class BattleBarge : MonoBehaviour
         turret2.Fire();
     }
 
+    void TryThrowTorpedo()
+    {
+        if(!isTorpedo)
+            ThrowTorpedo();
+
+        if(isTorpedo)
+            timerTorpedoDelay += Time.deltaTime;
+
+        if(timerTorpedoDelay >= timeTorpedoDelay)
+        {
+            timerTorpedoDelay = 0;
+            isTorpedo = false;
+        }
+    }
+
+    void ThrowTorpedo()
+    {
+        isTorpedo = true;
+
+        Instantiate(torpedo, transform.position, Quaternion.identity);
+    }
+
+    void TryDischarge()
+    {
+        if(!isDischarge)
+            Discharge();
+
+        if(isDischarge)
+            timerDischargeDelay += Time.deltaTime;
+
+        if(timerDischargeDelay >= timeDischargeDelay)
+        {
+            timerDischargeDelay = 0;
+            isDischarge = false;
+        }
+    }
+
+    void Discharge()
+    {
+        isDischarge = true;
+
+        for(int i = -3; i < 3; i++)
+        {
+            Instantiate(torpedo, transform.position + new Vector3(0, i), Quaternion.identity);
+        }
+    }
+
     void SetStatus()
     {
-        if(hp <= 20)
+        if(hp <= 100)
             turret1.MakeBroken();
 
-        if(hp <= 10)
+        if(hp <= 50)
+        {
             turret2.MakeBroken();
+            timeTorpedoDelay = 2;
+
+            timeDischargeDelay = 5;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D col)

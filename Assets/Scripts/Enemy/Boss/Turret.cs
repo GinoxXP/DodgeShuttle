@@ -6,8 +6,6 @@ public class Turret : MonoBehaviour
 {
     private Transform player;
 
-    public float rotateSpeed;
-
     public ParticleSystem particleSystem;
     public bool isBroken;
 
