@@ -7,9 +7,8 @@ public class ExitMenu : MonoBehaviour
 {
     public GameObject exitPanel;
 
-    public void OnExit(InputAction.CallbackContext context)
+    public void Exit()
     {
-        if(context.performed)
-            exitPanel.SetActive(!exitPanel.activeSelf);
+        exitPanel.SetActive(!exitPanel.activeSelf);    
     }
 }
