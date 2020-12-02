@@ -76,13 +76,13 @@ TextureImporter:
     second: mine_core
   - first:
       213: -5012102097781483192
-    second: shuttles_2
+    second: shuttle_player_mk3_dual
   - first:
       213: -7163049649067485869
     second: asteroid
   - first:
       213: 80503580530045855
-    second: shuttles_4
+    second: shuttle_player_mk4
   - first:
       213: -7306746340587236403
     second: shuttles_17
@@ -95,6 +95,15 @@ TextureImporter:
   - first:
       213: 5071349404493964823
     second: hexon
+  - first:
+      213: 5000647553047461426
+    second: shuttle_player_mk3
+  - first:
+      213: 5000647553047461426
+    second: shuttle_player_mk3
+  - first:
+      213: 7419740110421288279
+    second: shuttle_player_turret
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -545,7 +554,7 @@ TextureImporter:
         width: 236
         height: 264
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -553,6 +562,90 @@ TextureImporter:
       bones: []
       spriteID: 71660ca0a6d016640800000000000000
       internalID: 5071349404493964823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shuttle_player_mk3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1290
+        width: 135
+        height: 156
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23ef156747ed56540800000000000000
+      internalID: 5000647553047461426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shuttle_player_mk3_dual
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 1291
+        width: 135
+        height: 155
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8499eb382bf617ab0800000000000000
+      internalID: -5012102097781483192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shuttle_player_turret
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1465
+        width: 34
+        height: 17
+      alignment: 9
+      pivot: {x: 0.21, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 755e067a15638f660800000000000000
+      internalID: 7419740110421288279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shuttle_player_mk4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1502
+        width: 176
+        height: 111
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f93f3a874910e1100800000000000000
+      internalID: 80503580530045855
       vertices: []
       indices: 
       edges: []
