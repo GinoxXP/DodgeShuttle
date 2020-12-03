@@ -160,10 +160,10 @@ public class Hexon : MonoBehaviour
 
     void SetStatus()
     {
-        if(hp <= 100)
+        if(hp == 70)
             turret1.MakeBroken();
 
-        if(hp <= 50)
+        if(hp == 20)
         {
             turret2.MakeBroken();
             timeTorpedoDelay = 2;

@@ -150,7 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.5
   spaceObject: {fileID: 6088317438645411919}
-  hp: 150
+  hp: 100
   turret1: {fileID: 676453920244704868}
   turret2: {fileID: 676453919923545554}
   timeFireDelay: 2
@@ -257,6 +257,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6709575325229585677, guid: 90e7580ef4507b9b685d1db344f94ae3,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6709575325229585679, guid: 90e7580ef4507b9b685d1db344f94ae3,
         type: 3}
       propertyPath: spaceObject
@@ -348,6 +353,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6709575325229585677, guid: 90e7580ef4507b9b685d1db344f94ae3,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6709575325229585679, guid: 90e7580ef4507b9b685d1db344f94ae3,
         type: 3}
