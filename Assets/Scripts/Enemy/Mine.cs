@@ -27,6 +27,9 @@ public class Mine : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = new Vector2(-speed * spaceObject.speedMultiplier, 0);
+
+        for(int i = 0; i < weapons.Length; i++)
+            weapons[i].bulletSpeed *= spaceObject.speedMultiplier;
     }
 
     void Update()

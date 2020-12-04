@@ -68,6 +68,42 @@ TextureImporter:
   - first:
       213: 4582906721948326252
     second: shuttle_player_mk2_triple
+  - first:
+      213: -9054297478603384347
+    second: space_taker
+  - first:
+      213: 7466639281942291550
+    second: mine_core
+  - first:
+      213: -5012102097781483192
+    second: shuttle_player_mk3_dual
+  - first:
+      213: -7163049649067485869
+    second: asteroid
+  - first:
+      213: 80503580530045855
+    second: shuttle_player_mk4
+  - first:
+      213: -7306746340587236403
+    second: shuttles_17
+  - first:
+      213: 2558143331689946202
+    second: torpedo
+  - first:
+      213: 2808564263240223317
+    second: torpedo_activated
+  - first:
+      213: 5071349404493964823
+    second: hexon
+  - first:
+      213: 5000647553047461426
+    second: shuttle_player_mk3
+  - first:
+      213: 5000647553047461426
+    second: shuttle_player_mk3
+  - first:
+      213: 7419740110421288279
+    second: shuttle_player_turret
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -153,13 +189,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: shuttle_player_legacy
+      name: space_taker
       rect:
         serializedVersion: 2
         x: 0
-        y: 565
-        width: 115
-        height: 92
+        y: 677
+        width: 497
+        height: 254
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,13 +210,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: asteroid
+      name: mine_core
       rect:
         serializedVersion: 2
-        x: 136
-        y: 562
-        width: 99
-        height: 95
+        x: 409
+        y: 312
+        width: 51
+        height: 51
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,34 +231,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: swarm_unit_legacy
+      name: asteroid
       rect:
         serializedVersion: 2
-        x: 249
-        y: 565
-        width: 65
-        height: 92
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8499eb382bf617ab0800000000000000
-      internalID: -5012102097781483192
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rusher_legacy
-      rect:
-        serializedVersion: 2
-        x: 343
-        y: 565
-        width: 64
-        height: 92
+        x: 136
+        y: 562
+        width: 99
+        height: 96
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,34 +252,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: deffender_legacy
-      rect:
-        serializedVersion: 2
-        x: 423
-        y: 565
-        width: 79
-        height: 92
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f93f3a874910e1100800000000000000
-      internalID: 80503580530045855
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: swarm_unit
       rect:
         serializedVersion: 2
         x: 0
         y: 456
         width: 64
-        height: 92
+        height: 93
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -285,7 +279,7 @@ TextureImporter:
         x: 82
         y: 463
         width: 89
-        height: 81
+        height: 82
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -325,7 +319,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 274
-        y: 455
+        y: 456
         width: 169
         height: 93
       alignment: 0
@@ -367,11 +361,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 394
-        y: 403
+        y: 404
         width: 66
-        height: 25
-      alignment: 9
-      pivot: {x: 0.75, y: 0.5}
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -505,6 +499,153 @@ TextureImporter:
       bones: []
       spriteID: c69da70e161c99f30800000000000000
       internalID: 4582906721948326252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: torpedo
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 577
+        width: 114
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5cd9e97ec9508320800000000000000
+      internalID: 2558143331689946202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: torpedo_activated
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 574
+        width: 106
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55a4a4721560af620800000000000000
+      internalID: 2808564263240223317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hexon
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1006
+        width: 236
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71660ca0a6d016640800000000000000
+      internalID: 5071349404493964823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shuttle_player_mk3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1290
+        width: 135
+        height: 156
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23ef156747ed56540800000000000000
+      internalID: 5000647553047461426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shuttle_player_mk3_dual
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 1291
+        width: 135
+        height: 155
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8499eb382bf617ab0800000000000000
+      internalID: -5012102097781483192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shuttle_player_turret
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1465
+        width: 34
+        height: 17
+      alignment: 9
+      pivot: {x: 0.21, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 755e067a15638f660800000000000000
+      internalID: 7419740110421288279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shuttle_player_mk4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1502
+        width: 176
+        height: 111
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f93f3a874910e1100800000000000000
+      internalID: 80503580530045855
       vertices: []
       indices: 
       edges: []

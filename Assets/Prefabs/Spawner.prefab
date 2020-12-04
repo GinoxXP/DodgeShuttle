@@ -150,6 +150,12 @@ MonoBehaviour:
     isBossFight: 0
   - startDistance: 70
     spawningObjects:
+    - spawningObject: {fileID: 8150391337113146159, guid: 6dd44d1730b8ec05b824bccd6a7d2eb5,
+        type: 3}
+      frequencySpawn: 1
+    isBossFight: 1
+  - startDistance: 75
+    spawningObjects:
     - spawningObject: {fileID: 6900313121548786772, guid: d4c90d96e9d1e827aaf321791eb7fad6,
         type: 3}
       frequencySpawn: 0.05
@@ -175,13 +181,46 @@ MonoBehaviour:
         type: 3}
       frequencySpawn: 0.2
     isBossFight: 0
-  - startDistance: 120
+  - startDistance: 140
     spawningObjects:
-    - spawningObject: {fileID: 8150391337113146159, guid: 6dd44d1730b8ec05b824bccd6a7d2eb5,
+    - spawningObject: {fileID: 6871576467852719513, guid: 1c1ee5e1528c30cf3a9bc2f0d8ec3662,
         type: 3}
       frequencySpawn: 1
     isBossFight: 1
-  - startDistance: 125
+  - startDistance: 145
+    spawningObjects:
+    - spawningObject: {fileID: 6900313121548786772, guid: d4c90d96e9d1e827aaf321791eb7fad6,
+        type: 3}
+      frequencySpawn: 0.2
+    - spawningObject: {fileID: 8948299043286764177, guid: 8e04728772a5e73d59a05b9b5fccc62e,
+        type: 3}
+      frequencySpawn: 0.2
+    - spawningObject: {fileID: 5994768413731962377, guid: 3fe3b9b6f04d9bb70809dc442d568710,
+        type: 3}
+      frequencySpawn: 0.2
+    - spawningObject: {fileID: 5009419818429750610, guid: 9c5aa0359d3f81b01aaa819ec5c49b00,
+        type: 3}
+      frequencySpawn: 0.1
+    - spawningObject: {fileID: 625999445954369863, guid: ac54249c163cd72f9b3b18ea0bedf8da,
+        type: 3}
+      frequencySpawn: 0.05
+    - spawningObject: {fileID: 7497197920944007092, guid: 99d9135d11da7524a8e5f43fcc939329,
+        type: 3}
+      frequencySpawn: 0.1
+    - spawningObject: {fileID: 4431395852987726154, guid: ba47a209cb6096dd79979f14a8719f76,
+        type: 3}
+      frequencySpawn: 0.1
+    - spawningObject: {fileID: 5485221432760621505, guid: 17d9bf87a5fe49aaaa27d5156efcb86d,
+        type: 3}
+      frequencySpawn: 0.05
+    isBossFight: 0
+  - startDistance: 205
+    spawningObjects:
+    - spawningObject: {fileID: 6088317438645411916, guid: 0ff289285d6327bc48b5e8ef0d738097,
+        type: 3}
+      frequencySpawn: 1
+    isBossFight: 1
+  - startDistance: 210
     spawningObjects:
     - spawningObject: {fileID: 6900313121548786772, guid: d4c90d96e9d1e827aaf321791eb7fad6,
         type: 3}
@@ -214,3 +253,4 @@ MonoBehaviour:
   speedMultiplierStart: 1
   spawnDelayTime: 1.5
   distance: 0
+  isPause: 0

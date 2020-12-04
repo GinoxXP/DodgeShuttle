@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
 
     public Weapon[] weapons;
 
+    private bool isFireReady;
 
     void Start()
     {
@@ -38,6 +39,12 @@ public class Player : MonoBehaviour
     {
         Move();
 
+        if(isFireReady)
+        {
+            if(!isFire)
+                Fire();
+        }
+        
         if(isFire)
         {
             fireDelayTimer += Time.deltaTime;
@@ -76,9 +83,10 @@ public class Player : MonoBehaviour
 
     public void OnFire(InputAction.CallbackContext context)
     {
-        if(context.performed)
-            if(!isFire)
-                Fire();
+        if(context.started)
+            isFireReady = true;
+        if(context.canceled)
+            isFireReady = false;
     }
 
     public void SetStatus()
