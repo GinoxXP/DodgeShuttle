@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Drop : MonoBehaviour
 {
-    public DropItem[] dropItems;
+    [SerializeField] DropItem[] dropItems;
 
     public void DropItem(float speedMultiplier)
     {

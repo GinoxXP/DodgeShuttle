@@ -3,32 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
 {
-    public float speed;
+    [SerializeField] float speed;
 
-    private Vector2 velocity;
-    private Rigidbody2D rb;
+    Vector2 velocity;
+    Rigidbody2D rb;
 
-    public float fireDelayTime;
-    private float fireDelayTimer;
-    private bool isFire;
+    [SerializeField] float fireDelayTime;
+    float fireDelayTimer;
+    bool isFire;
 
-    public SpaceObject spaceObject;
+    [SerializeField] SpaceObject spaceObject;
 
     public bool isBroken;
-    public ParticleSystem particleSystem;
+    [SerializeField] ParticleSystem particleSystem;
 
     public bool isImmunity;
-    public GameObject shield;
-    public float immunityTime;
-    private float immunityTimer;
+    [SerializeField] GameObject shield;
+    [SerializeField] float immunityTime;
+    float immunityTimer;
 
     public GameObject nextGenerationShuttle;
 
-    public Weapon[] weapons;
+    [SerializeField] Weapon[] weapons;
 
-    private bool isFireReady;
+    bool isFireReady;
 
     void Start()
     {
@@ -44,7 +45,7 @@ public class Player : MonoBehaviour
             if(!isFire)
                 Fire();
         }
-        
+
         if(isFire)
         {
             fireDelayTimer += Time.deltaTime;
@@ -60,7 +61,7 @@ public class Player : MonoBehaviour
             ComputeImmunity();
     }
 
-    private void Move()
+    void Move()
     {
         if(velocity == null)
             velocity = new Vector2(0, 0);
@@ -68,7 +69,7 @@ public class Player : MonoBehaviour
         rb.velocity = velocity.normalized * speed * spaceObject.speedMultiplier;
     }
 
-    private void Fire()
+    void Fire()
     {
         for(int i = 0; i < weapons.Length; i++)
             weapons[i].Fire();

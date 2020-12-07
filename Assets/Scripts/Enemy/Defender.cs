@@ -4,25 +4,25 @@ using UnityEngine;
 
 public class Defender : MonoBehaviour
 {
-    public float speed;
-    public float speedAiming;
+    [SerializeField] float speed;
+    [SerializeField] float speedAiming;
 
-    private Rigidbody2D rb;
-    public SpaceObject spaceObject;
+    Rigidbody2D rb;
+    [SerializeField] SpaceObject spaceObject;
 
-    private Transform player;
+    Transform player;
 
-    public float timeFireDelay;
-    private float timer;
-    private bool isFire;
+    [SerializeField] float timeFireDelay;
+    float timer;
+    bool isFire;
 
-    public GameObject bullet;
+    [SerializeField] GameObject bullet;
 
-    public float lifeTime;
-    private float lifeTimer;
-    private bool isAlive = true;
+    [SerializeField] float lifeTime;
+    float lifeTimer;
+    bool isAlive = true;
 
-    public Drop drop;
+    [SerializeField] Drop drop;
 
     void Start()
     {
@@ -36,10 +36,7 @@ public class Defender : MonoBehaviour
     {
         if(isAlive)
         {
-            if(player != null)
-                rb.velocity = new Vector2(rb.velocity.x, player.position.y > transform.position.y ? speedAiming : -speedAiming);
-            else
-                rb.velocity = new Vector2(rb.velocity.x, 0);
+            Aim();
 
             if(!isFire)
                 Fire();
@@ -53,16 +50,26 @@ public class Defender : MonoBehaviour
                 isFire = false;
             }
 
+
             lifeTimer += Time.deltaTime;
 
             if(lifeTimer >= lifeTime)
                 isAlive = false;
         }
         else
-            rb.velocity = new Vector2(speed*3, 0);
+            rb.velocity = new Vector2(speed*3 * spaceObject.speedMultiplier, 0);
     }
 
-    private void Fire()
+    void Aim()
+    {
+        if(player != null)
+            rb.velocity = new Vector2(rb.velocity.x,
+                                    (player.position.y > transform.position.y ? speedAiming : -speedAiming) * spaceObject.speedMultiplier); 
+        else
+            rb.velocity = new Vector2(rb.velocity.x, 0);
+    }
+
+    void Fire()
     {
         GameObject bullet = Instantiate(this.bullet, transform.position, Quaternion.identity);
         bullet.GetComponent<Bullet>().speedMultiplier = spaceObject.speedMultiplier;

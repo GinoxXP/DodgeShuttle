@@ -2,46 +2,47 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Hexon : MonoBehaviour
 {
-    public float speed;
+    [SerializeField] float speed;
 
-    public SpaceObject spaceObject;
+    [SerializeField] SpaceObject spaceObject;
 
     private Rigidbody2D rb;
 
-    public int hp;
+    [SerializeField] int hp;
 
     [Space]
-    public Turret turret1;
-    public Turret turret2;
+    [SerializeField] Turret turret1;
+    [SerializeField] Turret turret2;
 
     [Space]
-    public float timeFireDelay;
-    private float timerFireDelay;
-    private bool isFire;
+    [SerializeField] float timeFireDelay;
+    float timerFireDelay;
+    bool isFire;
 
     [Space]
-    public GameObject torpedo;
-    public float timeTorpedoDelay;
-    private float timerTorpedoDelay;
-    private bool isTorpedo;
+    [SerializeField] GameObject torpedo;
+    [SerializeField] float timeTorpedoDelay;
+    float timerTorpedoDelay;
+    bool isTorpedo;
 
     [Space]
-    public int waypointCount;
-    private Vector3[] waypoints;
-    private int indexWaypoint;
+    [SerializeField] int waypointCount;
+    Vector3[] waypoints;
+    int indexWaypoint;
 
     [Space]
-    public Vector2 leftUpCorner;
-    public Vector2 rightDownCorner;
+    [SerializeField] Vector2 leftUpCorner;
+    [SerializeField] Vector2 rightDownCorner;
 
-    public Drop drop;
+    [SerializeField] Drop drop;
 
     [Space]
-    public float timeDischargeDelay;
-    private float timerDischargeDelay;
-    private bool isDischarge;
+    [SerializeField] float timeDischargeDelay;
+    float timerDischargeDelay;
+    bool isDischarge;
 
     void Start()
     {

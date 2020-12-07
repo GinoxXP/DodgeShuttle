@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlanetBG : MonoBehaviour
 {
-    public Vector3 velocity;
+    [SerializeField] Vector3 velocity;
 
     void Start()
     {

@@ -4,29 +4,34 @@ using UnityEngine;
 
 public class BattleBarge : MonoBehaviour
 {
-    public float speed;
+    [SerializeField] float speed;
 
-    public SpaceObject spaceObject;
+    [SerializeField] SpaceObject spaceObject;
 
-    private Rigidbody2D rb;
+    Rigidbody2D rb;
 
-    public int hp;
+    [SerializeField] int hp;
 
-    public Turret turret1;
-    public Turret turret2;
+    [Space]
+    [SerializeField] Turret turret1;
+    [SerializeField] Turret turret2;
 
-    public float timeFireDelay;
-    private float timerFireDelay;
-    private bool isFire;
+    [Space]
+    [SerializeField] float timeFireDelay;
+    float timerFireDelay;
+    bool isFire;
 
-    public int waypointCount;
-    private Vector3[] waypoints;
-    private int indexWaypoint;
+    [Space]
+    [SerializeField] int waypointCount;
+    Vector3[] waypoints;
+    int indexWaypoint;
 
-    public Vector2 leftUpCorner;
-    public Vector2 rightDownCorner;
+    [Space]
+    [SerializeField] Vector2 leftUpCorner;
+    [SerializeField] Vector2 rightDownCorner;
 
-    public Drop drop;
+    [Space]
+    [SerializeField] Drop drop;
 
     void Start()
     {

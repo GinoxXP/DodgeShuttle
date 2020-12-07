@@ -2,21 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Torpedo : MonoBehaviour
 {
-    private Transform player;
+    Transform player;
+    Rigidbody2D rb;
 
-    public float speed;
-    public float speedBoost;
+    [SerializeField] float speed;
+    [SerializeField] float speedBoost;
 
-    public float boostDistance;
+    [Space]
+    [SerializeField] float boostDistance;
 
-    public bool isBoost;
+    [Space]
+    [SerializeField] bool isBoost;
 
-    private Rigidbody2D rb;
-
-    public SpriteRenderer spriteRenderer;
-    public Sprite boostedTorpedo;
+    [Space]
+    [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] Sprite boostedTorpedo;
 
     void Start()
     {

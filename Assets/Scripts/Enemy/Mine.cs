@@ -2,26 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Mine : MonoBehaviour
 {
-    public bool isActive;
+    [SerializeField] bool isActive;
 
-    public float speed;
+    [SerializeField] float speed;
 
-    private Rigidbody2D rb;
+    Rigidbody2D rb;
     public SpaceObject spaceObject;
 
-    public GameObject bullet;
+    [SerializeField] GameObject bullet;
 
-    public Weapon[] weapons;
+    [SerializeField] Weapon[] weapons;
 
-    public int timeFireDelay;
-    private float timerFireDelay;
-    private bool isFire;
+    [SerializeField] int timeFireDelay;
+    float timerFireDelay;
+    bool isFire;
 
-    public float time;
+    [SerializeField] float time;
 
-    public int rotationDegreeInSecond;
+    [SerializeField] int rotationDegreeInSecond;
 
     void Start()
     {
@@ -54,11 +55,9 @@ public class Mine : MonoBehaviour
 
     private void Fire()
     {
-        // GameObject bullet = Instantiate(this.bullet, transform.position, Quaternion.identity);
-        // bullet.GetComponent<Bullet>().speedMultiplier = spaceObject.speedMultiplier;
-
         for(int i = 0; i < weapons.Length; i++)
             weapons[i].Fire();
+
         isFire = true;
     }
 
@@ -66,7 +65,6 @@ public class Mine : MonoBehaviour
     {
         if(col.tag == "Bullet")
         {
-            //spaceObject.Drop();
             isActive = true;
             Destroy(col.gameObject);
         }

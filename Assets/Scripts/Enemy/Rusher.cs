@@ -2,28 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Rusher : MonoBehaviour
 {
-    public float speed;
-    public float speedAiming;
+    [SerializeField] float speed;
+    [SerializeField] float speedAiming;
 
-    private Rigidbody2D rb;
-    public SpaceObject spaceObject;
+    Rigidbody2D rb;
+    [SerializeField] SpaceObject spaceObject;
 
-    private Transform player;
+    Transform player;
 
-    public float timeFireDelay;
-    private float timerFireDelay;
-    private bool isFire;
+    [SerializeField] float timeFireDelay;
+    float timerFireDelay;
+    bool isFire;
 
-    public GameObject bullet;
+    [SerializeField] GameObject bullet;
 
-    public int fireCountBeforeRush;
-    private int fireCounter;
+    [SerializeField] int fireCountBeforeRush;
+    int fireCounter;
 
-    private bool isRush;
+    bool isRush;
 
-    public Drop drop;
+    [SerializeField] Drop drop;
 
     void Start()
     {
@@ -43,10 +44,7 @@ public class Rusher : MonoBehaviour
 
     void Move()
     {
-        if(player != null)
-            rb.velocity = new Vector2(rb.velocity.x, player.position.y > transform.position.y ? speedAiming : -speedAiming);
-        else
-            rb.velocity = new Vector2(rb.velocity.x, 0);
+        Aim();
 
         if(!isFire)
             Fire();
@@ -64,8 +62,20 @@ public class Rusher : MonoBehaviour
             isRush = true;
     }
 
+    void Aim()
+    {
+        if(player != null)
+            rb.velocity = new Vector2(rb.velocity.x,
+                                    (player.position.y > transform.position.y ? speedAiming : -speedAiming) * spaceObject.speedMultiplier);
+        else
+            rb.velocity = new Vector2(rb.velocity.x, 0);
+    }
+
     void Rush()
     {
+        if(player == null)
+            return;
+            
         var heading = player.position - transform.position;
         var distance = heading.magnitude;
 

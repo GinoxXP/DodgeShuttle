@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
-    private Transform player;
+    Transform player;
 
-    public ParticleSystem particleSystem;
-    public bool isBroken;
+    [SerializeField] ParticleSystem particleSystem;
+    [SerializeField] bool isBroken;
 
-    public Weapon weapon;
+    [Space]
+    [SerializeField] Weapon weapon;
 
     void Start()
     {

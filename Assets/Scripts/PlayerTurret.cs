@@ -5,15 +5,15 @@ using UnityEngine;
 [RequireComponent(typeof(Weapon))]
 public class PlayerTurret : MonoBehaviour
 {
-    private GameObject[] enemies;
-    private Transform target;
+    GameObject[] enemies;
+    Transform target;
 
-    private Weapon weapon;
+    Weapon weapon;
 
     [Space]
-    public float fireDelayTime;
-    private float fireDelayTimer;
-    private bool isFire;
+    [SerializeField] float fireDelayTime;
+    float fireDelayTimer;
+    bool isFire;
 
     void Start()
     {
