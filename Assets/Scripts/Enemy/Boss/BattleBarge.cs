@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class BattleBarge : MonoBehaviour
 {
-    [SerializeField] float speed;
+    float speed;
+
+    [SerializeField] float speedFirstPhase;
+    [SerializeField] float speedSecondPhase;
+    [SerializeField] float speedThirdPhase;
 
     [SerializeField] SpaceObject spaceObject;
 
@@ -37,6 +41,8 @@ public class BattleBarge : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         GenerateWayPoint();
+
+        speed = speedFirstPhase;
     }
 
     void Update()
@@ -95,10 +101,18 @@ public class BattleBarge : MonoBehaviour
     void SetStatus()
     {
         if(hp <= 20)
+        {
             turret1.MakeBroken();
 
+            speed = speedSecondPhase;
+        }
+
         if(hp <= 10)
+        {
             turret2.MakeBroken();
+
+            speed = speedThirdPhase;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D col)
