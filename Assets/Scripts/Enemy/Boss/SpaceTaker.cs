@@ -34,6 +34,13 @@ public class SpaceTaker : MonoBehaviour
     bool isSwarmShield;
 
     [Space]
+    [SerializeField] GameObject swarm;
+    [SerializeField] float timeSwarmDelay;
+    float timerSwarmDelay;
+    bool isSwarm;
+    [SerializeField] Vector3 swarmSpawnOffset;
+
+    [Space]
     [SerializeField] int waypointCount;
     Vector3[] waypoints;
     int indexWaypoint;
@@ -56,6 +63,9 @@ public class SpaceTaker : MonoBehaviour
 
         TryDropAsteroid();
         TryMakeSwarmShield();
+
+        if(hp <= 40)
+            TrySpawnSwarm();
     }
 
     void Move()
@@ -135,6 +145,37 @@ public class SpaceTaker : MonoBehaviour
         isSwarmShield = true;
     }
 
+    void TrySpawnSwarm()
+    {
+        if(!isSwarm)
+            SpawnSwarm();
+
+        if(isSwarm)
+            timerSwarmDelay += Time.deltaTime;
+
+        if(timerSwarmDelay >= timeSwarmDelay)
+        {
+            timerSwarmDelay = 0;
+            isSwarm = false;
+        }
+    }
+
+    void SpawnSwarm()
+    {
+        GameObject swarm = Instantiate(this.swarm,
+                                          transform.position + swarmSpawnOffset,
+                                          Quaternion.identity);
+
+        for(int i = 0; i < swarm.transform.childCount; i++)
+        {
+            GameObject swarmUnit = swarm.transform.GetChild(i).gameObject;
+
+            swarmUnit.GetComponent<SpaceObject>().speedMultiplier = spaceObject.speedMultiplier;
+        }
+
+        isSwarm = true;
+    }
+
     void GenerateWayPoint()
     {
         waypoints = new Vector3[waypointCount];
@@ -173,7 +214,7 @@ public class SpaceTaker : MonoBehaviour
 
             hp--;
             SetStatus();
-            
+
             if(hp <= 0)
             {
                 drop.DropItem(spaceObject.speedMultiplier);
