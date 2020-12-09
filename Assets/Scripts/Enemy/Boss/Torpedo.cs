@@ -21,12 +21,15 @@ public class Torpedo : MonoBehaviour
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Sprite boostedTorpedo;
 
+    [Space]
+    [SerializeField] float guaranteedDestroyTime;
+
     void Start()
     {
         player = GameObject.FindGameObjectsWithTag("Player")[0].transform;
         rb = GetComponent<Rigidbody2D>();
 
-        Destroy(gameObject, 10);
+        Destroy(gameObject, guaranteedDestroyTime);
     }
 
     void Update()
@@ -49,7 +52,7 @@ public class Torpedo : MonoBehaviour
     {
         if(player == null)
             return;
-            
+
         float distance = Vector3.Distance(player.position, transform.position);
 
         if(distance <= boostDistance)

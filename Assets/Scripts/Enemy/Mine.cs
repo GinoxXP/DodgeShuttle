@@ -63,10 +63,12 @@ public class Mine : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.tag == "Bullet")
+        if(col.TryGetComponent(out Bullet bullet))
         {
             isActive = true;
-            Destroy(col.gameObject);
+            
+            if(col.tag == "Bullet")
+                Destroy(col.gameObject);
         }
     }
 }
