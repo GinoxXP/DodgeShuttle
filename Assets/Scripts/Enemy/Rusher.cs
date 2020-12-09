@@ -75,7 +75,13 @@ public class Rusher : MonoBehaviour
     {
         if(player == null)
             return;
-            
+
+        if(player.position.x > transform.position.x)
+        {
+            rb.velocity = new Vector2(-speed * spaceObject.speedMultiplier * 6, 0);
+            return;
+        }
+
         var heading = player.position - transform.position;
         var distance = heading.magnitude;
 

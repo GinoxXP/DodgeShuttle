@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  speedAiming: 2
+  speedAiming: 1
   spaceObject: {fileID: 4431395852987726193}
   timeFireDelay: 1
   bullet: {fileID: 473367469029062732, guid: 12f964bf528cdc4d7ad1baba0eee298d, type: 3}
