@@ -3187,9 +3187,44 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
         type: 3}
+      propertyPath: difficultLevels.Array.size
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[6].spawningObjects.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[7].spawningObjects.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[8].spawningObjects.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[9].spawningObjects.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[10].spawningObjects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[11].spawningObjects.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
       propertyPath: difficultLevels.Array.data[7].spawningObjects.Array.data[1].spawningObject
       value: 
-      objectReference: {fileID: 8948299043286764177, guid: 8e04728772a5e73d59a05b9b5fccc62e,
+      objectReference: {fileID: 5248106072715624759, guid: a41c9e934bf572da394f5b61ba245f04,
         type: 3}
     - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
         type: 3}
@@ -3200,7 +3235,7 @@ PrefabInstance:
         type: 3}
       propertyPath: difficultLevels.Array.data[7].spawningObjects.Array.data[2].spawningObject
       value: 
-      objectReference: {fileID: 5994768413731962377, guid: 3fe3b9b6f04d9bb70809dc442d568710,
+      objectReference: {fileID: 7985912401997611651, guid: 56a0421c02946d40bbafe8098e699a75,
         type: 3}
     - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
         type: 3}
@@ -3211,12 +3246,12 @@ PrefabInstance:
         type: 3}
       propertyPath: difficultLevels.Array.data[7].spawningObjects.Array.data[3].spawningObject
       value: 
-      objectReference: {fileID: 5009419818429750610, guid: 9c5aa0359d3f81b01aaa819ec5c49b00,
+      objectReference: {fileID: 625999445954369863, guid: ac54249c163cd72f9b3b18ea0bedf8da,
         type: 3}
     - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
         type: 3}
       propertyPath: difficultLevels.Array.data[7].spawningObjects.Array.data[3].frequencySpawn
-      value: 0.1
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
         type: 3}
@@ -3260,6 +3295,414 @@ PrefabInstance:
     - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
         type: 3}
       propertyPath: difficultLevels.Array.data[7].spawningObjects.Array.data[7].frequencySpawn
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[6].startDistance
+      value: 145
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[6].spawningObjects.Array.data[0].spawningObject
+      value: 
+      objectReference: {fileID: 6871576467852719513, guid: 1c1ee5e1528c30cf3a9bc2f0d8ec3662,
+        type: 3}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[6].spawningObjects.Array.data[0].frequencySpawn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[6].isBossFight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[7].startDistance
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[7].spawningObjects.Array.data[0].spawningObject
+      value: 
+      objectReference: {fileID: 5350734013583299772, guid: 479eeecd412e1fa69a99b7ab2af88dbc,
+        type: 3}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[7].spawningObjects.Array.data[0].frequencySpawn
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[7].isBossFight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[8].startDistance
+      value: 170
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[8].spawningObjects.Array.data[0].spawningObject
+      value: 
+      objectReference: {fileID: 5350734013583299772, guid: 479eeecd412e1fa69a99b7ab2af88dbc,
+        type: 3}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[8].spawningObjects.Array.data[0].frequencySpawn
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[8].isBossFight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[9].startDistance
+      value: 185
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[9].spawningObjects.Array.data[0].spawningObject
+      value: 
+      objectReference: {fileID: 6900313121548786772, guid: d4c90d96e9d1e827aaf321791eb7fad6,
+        type: 3}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[9].spawningObjects.Array.data[0].frequencySpawn
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[9].spawningObjects.Array.data[1].spawningObject
+      value: 
+      objectReference: {fileID: 8948299043286764177, guid: 8e04728772a5e73d59a05b9b5fccc62e,
+        type: 3}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[9].spawningObjects.Array.data[1].frequencySpawn
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[9].spawningObjects.Array.data[2].spawningObject
+      value: 
+      objectReference: {fileID: 5994768413731962377, guid: 3fe3b9b6f04d9bb70809dc442d568710,
+        type: 3}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[9].spawningObjects.Array.data[2].frequencySpawn
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[9].spawningObjects.Array.data[3].spawningObject
+      value: 
+      objectReference: {fileID: 5009419818429750610, guid: 9c5aa0359d3f81b01aaa819ec5c49b00,
+        type: 3}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[9].spawningObjects.Array.data[3].frequencySpawn
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[9].spawningObjects.Array.data[4].spawningObject
+      value: 
+      objectReference: {fileID: 625999445954369863, guid: ac54249c163cd72f9b3b18ea0bedf8da,
+        type: 3}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[9].spawningObjects.Array.data[4].frequencySpawn
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[9].spawningObjects.Array.data[5].spawningObject
+      value: 
+      objectReference: {fileID: 7497197920944007092, guid: 99d9135d11da7524a8e5f43fcc939329,
+        type: 3}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[9].spawningObjects.Array.data[5].frequencySpawn
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[9].spawningObjects.Array.data[6].spawningObject
+      value: 
+      objectReference: {fileID: 4431395852987726154, guid: ba47a209cb6096dd79979f14a8719f76,
+        type: 3}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[9].spawningObjects.Array.data[6].frequencySpawn
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[9].spawningObjects.Array.data[7].spawningObject
+      value: 
+      objectReference: {fileID: 5485221432760621505, guid: 17d9bf87a5fe49aaaa27d5156efcb86d,
+        type: 3}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[9].spawningObjects.Array.data[7].frequencySpawn
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[6].spawningObjects.Array.data[1].spawningObject
+      value: 
+      objectReference: {fileID: 5248106072715624759, guid: a41c9e934bf572da394f5b61ba245f04,
+        type: 3}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[6].spawningObjects.Array.data[1].frequencySpawn
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[6].spawningObjects.Array.data[2].spawningObject
+      value: 
+      objectReference: {fileID: 7985912401997611651, guid: 56a0421c02946d40bbafe8098e699a75,
+        type: 3}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[6].spawningObjects.Array.data[2].frequencySpawn
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[6].spawningObjects.Array.data[3].spawningObject
+      value: 
+      objectReference: {fileID: 625999445954369863, guid: ac54249c163cd72f9b3b18ea0bedf8da,
+        type: 3}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[6].spawningObjects.Array.data[3].frequencySpawn
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[9].isBossFight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[10].startDistance
+      value: 235
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[10].spawningObjects.Array.data[0].spawningObject
+      value: 
+      objectReference: {fileID: 6088317438645411916, guid: 0ff289285d6327bc48b5e8ef0d738097,
+        type: 3}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[10].spawningObjects.Array.data[0].frequencySpawn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[10].spawningObjects.Array.data[1].spawningObject
+      value: 
+      objectReference: {fileID: 8948299043286764177, guid: 8e04728772a5e73d59a05b9b5fccc62e,
+        type: 3}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[10].spawningObjects.Array.data[1].frequencySpawn
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[10].spawningObjects.Array.data[2].spawningObject
+      value: 
+      objectReference: {fileID: 5994768413731962377, guid: 3fe3b9b6f04d9bb70809dc442d568710,
+        type: 3}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[10].spawningObjects.Array.data[2].frequencySpawn
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[10].spawningObjects.Array.data[3].spawningObject
+      value: 
+      objectReference: {fileID: 5009419818429750610, guid: 9c5aa0359d3f81b01aaa819ec5c49b00,
+        type: 3}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[10].spawningObjects.Array.data[3].frequencySpawn
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[10].spawningObjects.Array.data[4].spawningObject
+      value: 
+      objectReference: {fileID: 625999445954369863, guid: ac54249c163cd72f9b3b18ea0bedf8da,
+        type: 3}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[10].spawningObjects.Array.data[4].frequencySpawn
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[10].spawningObjects.Array.data[5].spawningObject
+      value: 
+      objectReference: {fileID: 7497197920944007092, guid: 99d9135d11da7524a8e5f43fcc939329,
+        type: 3}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[10].spawningObjects.Array.data[5].frequencySpawn
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[10].spawningObjects.Array.data[6].spawningObject
+      value: 
+      objectReference: {fileID: 4431395852987726154, guid: ba47a209cb6096dd79979f14a8719f76,
+        type: 3}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[10].spawningObjects.Array.data[6].frequencySpawn
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[10].spawningObjects.Array.data[7].spawningObject
+      value: 
+      objectReference: {fileID: 5485221432760621505, guid: 17d9bf87a5fe49aaaa27d5156efcb86d,
+        type: 3}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[10].spawningObjects.Array.data[7].frequencySpawn
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[8].spawningObjects.Array.data[1].spawningObject
+      value: 
+      objectReference: {fileID: 5248106072715624759, guid: a41c9e934bf572da394f5b61ba245f04,
+        type: 3}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[8].spawningObjects.Array.data[2].spawningObject
+      value: 
+      objectReference: {fileID: 7985912401997611651, guid: 56a0421c02946d40bbafe8098e699a75,
+        type: 3}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[8].spawningObjects.Array.data[3].spawningObject
+      value: 
+      objectReference: {fileID: 625999445954369863, guid: ac54249c163cd72f9b3b18ea0bedf8da,
+        type: 3}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[8].spawningObjects.Array.data[3].frequencySpawn
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[10].isBossFight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[11].startDistance
+      value: 240
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[11].spawningObjects.Array.data[0].spawningObject
+      value: 
+      objectReference: {fileID: 6900313121548786772, guid: d4c90d96e9d1e827aaf321791eb7fad6,
+        type: 3}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[11].spawningObjects.Array.data[0].frequencySpawn
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[11].spawningObjects.Array.data[1].spawningObject
+      value: 
+      objectReference: {fileID: 8948299043286764177, guid: 8e04728772a5e73d59a05b9b5fccc62e,
+        type: 3}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[11].spawningObjects.Array.data[1].frequencySpawn
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[11].spawningObjects.Array.data[2].spawningObject
+      value: 
+      objectReference: {fileID: 5994768413731962377, guid: 3fe3b9b6f04d9bb70809dc442d568710,
+        type: 3}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[11].spawningObjects.Array.data[2].frequencySpawn
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[11].spawningObjects.Array.data[3].spawningObject
+      value: 
+      objectReference: {fileID: 5009419818429750610, guid: 9c5aa0359d3f81b01aaa819ec5c49b00,
+        type: 3}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[11].spawningObjects.Array.data[3].frequencySpawn
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[11].spawningObjects.Array.data[4].spawningObject
+      value: 
+      objectReference: {fileID: 625999445954369863, guid: ac54249c163cd72f9b3b18ea0bedf8da,
+        type: 3}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[11].spawningObjects.Array.data[4].frequencySpawn
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[11].spawningObjects.Array.data[5].spawningObject
+      value: 
+      objectReference: {fileID: 7497197920944007092, guid: 99d9135d11da7524a8e5f43fcc939329,
+        type: 3}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[11].spawningObjects.Array.data[5].frequencySpawn
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[11].spawningObjects.Array.data[6].spawningObject
+      value: 
+      objectReference: {fileID: 4431395852987726154, guid: ba47a209cb6096dd79979f14a8719f76,
+        type: 3}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[11].spawningObjects.Array.data[6].frequencySpawn
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[11].spawningObjects.Array.data[7].spawningObject
+      value: 
+      objectReference: {fileID: 5485221432760621505, guid: 17d9bf87a5fe49aaaa27d5156efcb86d,
+        type: 3}
+    - target: {fileID: 6342624112840586427, guid: df85f06eb9e41383a9002f9e20f1ea36,
+        type: 3}
+      propertyPath: difficultLevels.Array.data[11].spawningObjects.Array.data[7].frequencySpawn
       value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 7262817682714859735, guid: df85f06eb9e41383a9002f9e20f1ea36,
