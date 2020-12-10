@@ -31,7 +31,8 @@ public class PlayerTurret : MonoBehaviour
 
         if(!isFire)
         {
-            Fire();
+            if(target != null)
+                Fire();
         }
         else
         {
@@ -52,6 +53,12 @@ public class PlayerTurret : MonoBehaviour
         float nearDistance = Mathf.Infinity;
         for(int i = 0; i < enemies.Length; i++)
         {
+            if(enemies[i].TryGetComponent(out Mine mine))
+                break;
+
+            if(enemies[i].TryGetComponent(out Bullet bullet))
+                break;
+
             float distance = Vector3.Distance(transform.position, enemies[i].transform.position);
             if(distance < nearDistance)
             {
@@ -63,6 +70,9 @@ public class PlayerTurret : MonoBehaviour
 
     void Aim()
     {
+        if(target == null)
+            return;
+            
         Vector3 diff = target.position - transform.position;
         diff.Normalize();
         float rot_Z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
