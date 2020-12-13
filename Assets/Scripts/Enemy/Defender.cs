@@ -13,16 +13,15 @@ public class Defender : MonoBehaviour
     Transform player;
 
     [SerializeField] float timeFireDelay;
-    float timer;
-    bool isFire;
 
     [SerializeField] GameObject bullet;
 
     [SerializeField] float lifeTime;
-    float lifeTimer;
     bool isAlive = true;
 
     [SerializeField] Drop drop;
+
+    Coroutine fireCoroutine;
 
     void Start()
     {
@@ -30,32 +29,15 @@ public class Defender : MonoBehaviour
         rb.velocity = new Vector2(-speed * spaceObject.speedMultiplier, 0);
 
         player = GameObject.FindGameObjectsWithTag("Player")[0].transform;
+
+        fireCoroutine = StartCoroutine(Fire());
+        StartCoroutine(GoHome());
     }
 
     void Update()
     {
         if(isAlive)
-        {
             Aim();
-
-            if(!isFire)
-                Fire();
-
-            if(isFire)
-                timer += Time.deltaTime;
-
-            if(timer >= timeFireDelay)
-            {
-                timer = 0;
-                isFire = false;
-            }
-
-
-            lifeTimer += Time.deltaTime;
-
-            if(lifeTimer >= lifeTime)
-                isAlive = false;
-        }
         else
             rb.velocity = new Vector2(speed*3 * spaceObject.speedMultiplier, 0);
     }
@@ -64,16 +46,28 @@ public class Defender : MonoBehaviour
     {
         if(player != null)
             rb.velocity = new Vector2(rb.velocity.x,
-                                    (player.position.y > transform.position.y ? speedAiming : -speedAiming) * spaceObject.speedMultiplier); 
+                                    (player.position.y > transform.position.y ? speedAiming : -speedAiming) * spaceObject.speedMultiplier);
         else
             rb.velocity = new Vector2(rb.velocity.x, 0);
     }
 
-    void Fire()
+    IEnumerator Fire()
     {
-        GameObject bullet = Instantiate(this.bullet, transform.position, Quaternion.identity);
-        bullet.GetComponent<Bullet>().speedMultiplier = spaceObject.speedMultiplier;
-        isFire = true;
+        while(true)
+        {
+            GameObject bullet = Instantiate(this.bullet, transform.position, Quaternion.identity);
+            bullet.GetComponent<Bullet>().speedMultiplier = spaceObject.speedMultiplier;
+
+            yield return new WaitForSeconds(timeFireDelay);
+        }
+    }
+
+    IEnumerator GoHome()
+    {
+        yield return new WaitForSeconds(lifeTime);
+        isAlive = false;
+
+        StopCoroutine(fireCoroutine);
     }
 
     void OnTriggerEnter2D(Collider2D col)

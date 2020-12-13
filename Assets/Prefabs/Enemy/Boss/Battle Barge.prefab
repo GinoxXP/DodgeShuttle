@@ -159,6 +159,8 @@ MonoBehaviour:
   waypointCount: 6
   leftUpCorner: {x: 10, y: 7}
   rightDownCorner: {x: 12, y: -7}
+  hpBrokenTurret1: 20
+  hpBrokenTurret2: 10
   drop: {fileID: 6822813639384074108}
 --- !u!114 &8150391337113146133
 MonoBehaviour:

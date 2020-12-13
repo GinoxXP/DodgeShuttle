@@ -23,22 +23,17 @@ public class SpaceTaker : MonoBehaviour
     [Space]
     [SerializeField] GameObject asteroid;
     [SerializeField] float timeDropAsteroidDelay;
-    float timerDropAsteroidDelay;
-    bool isDropAsteroid;
     [SerializeField] Vector3 asteroidSpawnOffset;
 
     [Space]
     [SerializeField] GameObject swarmShield;
     [SerializeField] float timeSwarmShieldDelay;
-    float timerSwarmShieldDelay;
-    bool isSwarmShield;
 
     [Space]
     [SerializeField] GameObject swarm;
     [SerializeField] float timeSwarmDelay;
-    float timerSwarmDelay;
-    bool isSwarm;
     [SerializeField] Vector3 swarmSpawnOffset;
+    [SerializeField] int hpSwarmSpawn;
 
     [Space]
     [SerializeField] int waypointCount;
@@ -54,18 +49,16 @@ public class SpaceTaker : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         GenerateWayPoint();
+
+        StartCoroutine(SpawnAsteroid());
+        StartCoroutine(MakeSwarmShield());
+        StartCoroutine(SpawnSwarm());
     }
 
 
     void Update()
     {
         Move();
-
-        TryDropAsteroid();
-        TryMakeSwarmShield();
-
-        if(hp <= 40)
-            TrySpawnSwarm();
     }
 
     void Move()
@@ -84,96 +77,63 @@ public class SpaceTaker : MonoBehaviour
         }
     }
 
-    void TryDropAsteroid()
+    IEnumerator SpawnAsteroid()
     {
-        if(!isDropAsteroid)
-            DropAsteroid();
-
-        if(isDropAsteroid)
-            timerDropAsteroidDelay += Time.deltaTime;
-
-        if(timerDropAsteroidDelay >= timeDropAsteroidDelay)
+        while(true)
         {
-            timerDropAsteroidDelay = 0;
-            isDropAsteroid = false;
+            for(int i = 0; i < 7; i++)
+            {
+                float randomSpeedY = Random.Range(-3.0f, 3.0f);
+
+                GameObject asteroid = Instantiate(this.asteroid,
+                                                  transform.position + asteroidSpawnOffset,
+                                                  Quaternion.identity);
+
+                Asteroid asteroidComponent = asteroid.GetComponent<Asteroid>();
+                asteroidComponent.speed = new Vector3(-3 * spaceObject.speedMultiplier,
+                                                      randomSpeedY * spaceObject.speedMultiplier);
+            }
+
+            yield return new WaitForSeconds(timeDropAsteroidDelay);
         }
     }
 
-    void DropAsteroid()
+    IEnumerator MakeSwarmShield()
     {
-        for(int i = 0; i < 7; i++)
+        while(true)
         {
-            float randomSpeedY = Random.Range(-3.0f, 3.0f);
+            GameObject swarmShield = Instantiate(this.swarmShield,
+                                                 transform.position,
+                                                 Quaternion.identity);
 
-            GameObject asteroid = Instantiate(this.asteroid,
-                                              transform.position + asteroidSpawnOffset,
-                                              Quaternion.identity);
+            swarmShield.GetComponent<SwarmShield>().speed *= spaceObject.speedMultiplier;
 
-            Asteroid asteroidComponent = asteroid.GetComponent<Asteroid>();
-            asteroidComponent.speed = new Vector3(-3 * spaceObject.speedMultiplier,
-                                                  randomSpeedY * spaceObject.speedMultiplier);
-        }
+            swarmShield.transform.parent = transform;
 
-        isDropAsteroid = true;
-    }
-
-    void TryMakeSwarmShield()
-    {
-        if(!isSwarmShield)
-            MakeSwarmShield();
-
-        if(isSwarmShield)
-            timerSwarmShieldDelay += Time.deltaTime;
-
-        if(timerSwarmShieldDelay >= timeSwarmShieldDelay)
-        {
-            timerSwarmShieldDelay = 0;
-            isSwarmShield = false;
+            yield return new WaitForSeconds(timeSwarmDelay);
         }
     }
 
-    void MakeSwarmShield()
+    IEnumerator SpawnSwarm()
     {
-        GameObject swarmShield = Instantiate(this.swarmShield,
-                                             transform.position,
-                                             Quaternion.identity);
-
-        swarmShield.GetComponent<SwarmShield>().speed *= spaceObject.speedMultiplier;
-
-        swarmShield.transform.parent = transform;
-
-        isSwarmShield = true;
-    }
-
-    void TrySpawnSwarm()
-    {
-        if(!isSwarm)
-            SpawnSwarm();
-
-        if(isSwarm)
-            timerSwarmDelay += Time.deltaTime;
-
-        if(timerSwarmDelay >= timeSwarmDelay)
+        while(true)
         {
-            timerSwarmDelay = 0;
-            isSwarm = false;
+            if(hp < hpSwarmSpawn)
+            {
+                GameObject swarm = Instantiate(this.swarm,
+                                                  transform.position + swarmSpawnOffset,
+                                                  Quaternion.identity);
+
+                for(int i = 0; i < swarm.transform.childCount; i++)
+                {
+                    GameObject swarmUnit = swarm.transform.GetChild(i).gameObject;
+
+                    swarmUnit.GetComponent<SpaceObject>().speedMultiplier = spaceObject.speedMultiplier;
+                }
+
+                yield return new WaitForSeconds(timeSwarmDelay);
+            }
         }
-    }
-
-    void SpawnSwarm()
-    {
-        GameObject swarm = Instantiate(this.swarm,
-                                          transform.position + swarmSpawnOffset,
-                                          Quaternion.identity);
-
-        for(int i = 0; i < swarm.transform.childCount; i++)
-        {
-            GameObject swarmUnit = swarm.transform.GetChild(i).gameObject;
-
-            swarmUnit.GetComponent<SpaceObject>().speedMultiplier = spaceObject.speedMultiplier;
-        }
-
-        isSwarm = true;
     }
 
     void GenerateWayPoint()

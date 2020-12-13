@@ -22,8 +22,6 @@ public class BattleBarge : MonoBehaviour
 
     [Space]
     [SerializeField] float timeFireDelay;
-    float timerFireDelay;
-    bool isFire;
 
     [Space]
     [SerializeField] int waypointCount;
@@ -35,6 +33,10 @@ public class BattleBarge : MonoBehaviour
     [SerializeField] Vector2 rightDownCorner;
 
     [Space]
+    [SerializeField] int hpBrokenTurret1;
+    [SerializeField] int hpBrokenTurret2;
+
+    [Space]
     [SerializeField] Drop drop;
 
     void Start()
@@ -43,22 +45,12 @@ public class BattleBarge : MonoBehaviour
         GenerateWayPoint();
 
         speed = speedFirstPhase;
+
+        StartCoroutine(Fire());
     }
 
     void Update()
     {
-        if(!isFire)
-            Fire();
-
-        if(isFire)
-            timerFireDelay += Time.deltaTime;
-
-        if(timerFireDelay >= timeFireDelay)
-        {
-            timerFireDelay = 0;
-            isFire = false;
-        }
-
         Move();
     }
 
@@ -90,24 +82,27 @@ public class BattleBarge : MonoBehaviour
         }
     }
 
-    void Fire()
+    IEnumerator Fire()
     {
-        isFire = true;
+        while(true)
+        {
+            turret1.Fire();
+            turret2.Fire();
 
-        turret1.Fire();
-        turret2.Fire();
+            yield return new WaitForSeconds(timeFireDelay);
+        }
     }
 
     void SetStatus()
     {
-        if(hp <= 20)
+        if(hp <= hpBrokenTurret1)
         {
             turret1.MakeBroken();
 
             speed = speedSecondPhase;
         }
 
-        if(hp <= 10)
+        if(hp <= hpBrokenTurret1)
         {
             turret2.MakeBroken();
 

@@ -14431,6 +14431,7 @@ MonoBehaviour:
   swarm: {fileID: 5994768413731962377, guid: 3fe3b9b6f04d9bb70809dc442d568710, type: 3}
   timeSwarmDelay: 15
   swarmSpawnOffset: {x: 5, y: 0, z: 0}
+  hpSwarmSpawn: 40
   waypointCount: 3
   leftUpCorner: {x: 10, y: 7}
   rightDownCorner: {x: 12, y: -7}

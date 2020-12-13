@@ -17,8 +17,6 @@ public class Mine : MonoBehaviour
     [SerializeField] Weapon[] weapons;
 
     [SerializeField] int timeFireDelay;
-    float timerFireDelay;
-    bool isFire;
 
     [SerializeField] float time;
 
@@ -38,27 +36,21 @@ public class Mine : MonoBehaviour
         if(isActive)
         {
             transform.Rotate(transform.forward, rotationDegreeInSecond * Time.deltaTime);
-
-            if(!isFire)
-                Fire();
-
-            if(isFire)
-                timerFireDelay += Time.deltaTime;
-
-            if(timerFireDelay >= timeFireDelay)
-            {
-                timerFireDelay = 0;
-                isFire = false;
-            }
         }
     }
 
-    private void Fire()
+    IEnumerator Fire()
     {
-        for(int i = 0; i < weapons.Length; i++)
-            weapons[i].Fire();
+        while(true)
+        {
+            if(isActive)
+            {
+                for(int i = 0; i < weapons.Length; i++)
+                    weapons[i].Fire();
 
-        isFire = true;
+                yield return new WaitForSeconds(timeFireDelay);
+            }
+        }
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -66,7 +58,7 @@ public class Mine : MonoBehaviour
         if(col.TryGetComponent(out Bullet bullet))
         {
             isActive = true;
-            
+
             if(col.tag == "Bullet")
                 Destroy(col.gameObject);
         }

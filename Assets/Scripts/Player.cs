@@ -12,8 +12,6 @@ public class Player : MonoBehaviour
     Rigidbody2D rb;
 
     [SerializeField] float fireDelayTime;
-    float fireDelayTimer;
-    bool isFire;
 
     [SerializeField] SpaceObject spaceObject;
 
@@ -23,7 +21,6 @@ public class Player : MonoBehaviour
     public bool isImmunity;
     [SerializeField] GameObject shield;
     [SerializeField] float immunityTime;
-    float immunityTimer;
 
     public GameObject nextGenerationShuttle;
 
@@ -34,31 +31,14 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        StartCoroutine(Fire());
+        StartCoroutine(Immunity());
     }
 
     void Update()
     {
         Move();
-
-        if(isFireReady)
-        {
-            if(!isFire)
-                Fire();
-        }
-
-        if(isFire)
-        {
-            fireDelayTimer += Time.deltaTime;
-
-            if(fireDelayTimer >= fireDelayTime)
-            {
-                fireDelayTimer = 0;
-                isFire = false;
-            }
-        }
-
-        if(isImmunity)
-            ComputeImmunity();
     }
 
     void Move()
@@ -69,12 +49,35 @@ public class Player : MonoBehaviour
         rb.velocity = velocity.normalized * speed * spaceObject.speedMultiplier;
     }
 
-    void Fire()
+    IEnumerator Fire()
     {
-        for(int i = 0; i < weapons.Length; i++)
-            weapons[i].Fire();
+        while(true)
+        {
+            if(isFireReady)
+            {
+                for(int i = 0; i < weapons.Length; i++)
+                    weapons[i].Fire();
 
-        isFire = true;
+                yield return new WaitForSeconds(fireDelayTime);
+            }
+        }
+    }
+
+    IEnumerator Immunity()
+    {
+        while(true)
+        {
+            if(isImmunity)
+            {
+                shield.SetActive(true);
+
+                yield return new WaitForSeconds(immunityTime);
+
+                shield.SetActive(false);
+
+                isImmunity = false;
+            }
+        }
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -96,21 +99,6 @@ public class Player : MonoBehaviour
             particleSystem.Play();
         else
             particleSystem.Stop();
-    }
-
-    void ComputeImmunity()
-    {
-        immunityTimer += Time.deltaTime;
-
-        shield.SetActive(true);
-
-        if(immunityTimer >= immunityTime)
-        {
-            isImmunity = false;
-            immunityTimer = 0;
-
-            shield.SetActive(false);
-        }
     }
 
     void OnTriggerEnter2D(Collider2D col)

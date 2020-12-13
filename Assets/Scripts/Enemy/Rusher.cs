@@ -14,13 +14,10 @@ public class Rusher : MonoBehaviour
     Transform player;
 
     [SerializeField] float timeFireDelay;
-    float timerFireDelay;
-    bool isFire;
 
     [SerializeField] GameObject bullet;
 
     [SerializeField] int fireCountBeforeRush;
-    int fireCounter;
 
     bool isRush;
 
@@ -32,6 +29,8 @@ public class Rusher : MonoBehaviour
         rb.velocity = new Vector2(-speed * spaceObject.speedMultiplier, 0);
 
         player = GameObject.FindGameObjectsWithTag("Player")[0].transform;
+
+        StartCoroutine(Fire());
     }
 
     void Update()
@@ -45,21 +44,6 @@ public class Rusher : MonoBehaviour
     void Move()
     {
         Aim();
-
-        if(!isFire)
-            Fire();
-
-        if(isFire)
-            timerFireDelay += Time.deltaTime;
-
-        if(timerFireDelay >= timeFireDelay)
-        {
-            timerFireDelay = 0;
-            isFire = false;
-        }
-
-        if(fireCounter >= fireCountBeforeRush)
-            isRush = true;
     }
 
     void Aim()
@@ -92,12 +76,17 @@ public class Rusher : MonoBehaviour
         }
     }
 
-    void Fire()
+    IEnumerator Fire()
     {
-        GameObject bullet = Instantiate(this.bullet, transform.position, Quaternion.identity);
-        bullet.GetComponent<Bullet>().speedMultiplier = spaceObject.speedMultiplier;
-        isFire = true;
-        fireCounter++;
+        for(int i = 0; i < fireCountBeforeRush; i++)
+        {
+            GameObject bullet = Instantiate(this.bullet, transform.position, Quaternion.identity);
+            bullet.GetComponent<Bullet>().speedMultiplier = spaceObject.speedMultiplier;
+
+            yield return new WaitForSeconds(timeFireDelay);
+        }
+
+        isRush = true;
     }
 
     void OnTriggerEnter2D(Collider2D col)

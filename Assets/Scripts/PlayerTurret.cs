@@ -12,12 +12,13 @@ public class PlayerTurret : MonoBehaviour
 
     [Space]
     [SerializeField] float fireDelayTime;
-    float fireDelayTimer;
-    bool isFire;
+
 
     void Start()
     {
         weapon = GetComponent<Weapon>();
+
+        StartCoroutine(Fire());
     }
 
     void Update()
@@ -27,23 +28,6 @@ public class PlayerTurret : MonoBehaviour
 
         if(enemies.Length > 0)
             Aim();
-
-
-        if(!isFire)
-        {
-            if(target != null)
-                Fire();
-        }
-        else
-        {
-            fireDelayTimer += Time.deltaTime;
-        }
-
-        if(fireDelayTimer >= fireDelayTime)
-        {
-            fireDelayTimer = 0;
-            isFire = false;
-        }
     }
 
     void SetTarget()
@@ -72,16 +56,19 @@ public class PlayerTurret : MonoBehaviour
     {
         if(target == null)
             return;
-            
+
         Vector3 diff = target.position - transform.position;
         diff.Normalize();
         float rot_Z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler (0f, 0f, rot_Z);
     }
 
-    void Fire()
+    IEnumerator Fire()
     {
-        isFire = true;
-        weapon.Fire();
+        while(true)
+        {
+            if(target != null)
+                weapon.Fire();
+        }
     }
 }

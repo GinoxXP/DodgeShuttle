@@ -161,6 +161,9 @@ MonoBehaviour:
   rightDownCorner: {x: 12, y: -7}
   drop: {fileID: 6088317438645411909}
   timeDischargeDelay: 10
+  hpDischarge: 30
+  hpBrokenTurret1: 70
+  hpBrokenTurret2: 40
 --- !u!114 &6088317438645411919
 MonoBehaviour:
   m_ObjectHideFlags: 0

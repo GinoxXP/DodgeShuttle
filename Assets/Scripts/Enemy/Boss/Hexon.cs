@@ -19,14 +19,10 @@ public class Hexon : MonoBehaviour
 
     [Space]
     [SerializeField] float timeFireDelay;
-    float timerFireDelay;
-    bool isFire;
 
     [Space]
     [SerializeField] GameObject torpedo;
     [SerializeField] float timeTorpedoDelay;
-    float timerTorpedoDelay;
-    bool isTorpedo;
 
     [Space]
     [SerializeField] int waypointCount;
@@ -41,23 +37,24 @@ public class Hexon : MonoBehaviour
 
     [Space]
     [SerializeField] float timeDischargeDelay;
-    float timerDischargeDelay;
-    bool isDischarge;
+    [SerializeField] int hpDischarge;
+
+    [Space]
+    [SerializeField] int hpBrokenTurret1;
+    [SerializeField] int hpBrokenTurret2;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         GenerateWayPoint();
+
+        StartCoroutine(Fire());
+        StartCoroutine(ThrowTorpedo());
+        StartCoroutine(Discharge());
     }
 
     void Update()
     {
-        TryFire();
-        TryThrowTorpedo();
-
-        if(hp < 100)
-            TryDischarge();
-
         Move();
     }
 
@@ -89,73 +86,38 @@ public class Hexon : MonoBehaviour
         }
     }
 
-    void TryFire()
+    IEnumerator Fire()
     {
-        if(!isFire)
-            Fire();
-
-        if(isFire)
-            timerFireDelay += Time.deltaTime;
-
-        if(timerFireDelay >= timeFireDelay)
+        while(true)
         {
-            timerFireDelay = 0;
-            isFire = false;
+            turret1.Fire();
+            turret2.Fire();
+
+            yield return new WaitForSeconds(timeFireDelay);
         }
     }
 
-    void Fire()
+    IEnumerator ThrowTorpedo()
     {
-        isFire = true;
-
-        turret1.Fire();
-        turret2.Fire();
-    }
-
-    void TryThrowTorpedo()
-    {
-        if(!isTorpedo)
-            ThrowTorpedo();
-
-        if(isTorpedo)
-            timerTorpedoDelay += Time.deltaTime;
-
-        if(timerTorpedoDelay >= timeTorpedoDelay)
+        while(true)
         {
-            timerTorpedoDelay = 0;
-            isTorpedo = false;
+            Instantiate(torpedo, transform.position, Quaternion.identity);
+
+            yield return new WaitForSeconds(timeTorpedoDelay);
         }
     }
 
-    void ThrowTorpedo()
+    IEnumerator Discharge()
     {
-        isTorpedo = true;
-
-        Instantiate(torpedo, transform.position, Quaternion.identity);
-    }
-
-    void TryDischarge()
-    {
-        if(!isDischarge)
-            Discharge();
-
-        if(isDischarge)
-            timerDischargeDelay += Time.deltaTime;
-
-        if(timerDischargeDelay >= timeDischargeDelay)
+        while(true)
         {
-            timerDischargeDelay = 0;
-            isDischarge = false;
-        }
-    }
+            if(hp < hpDischarge)
+            {
+                for(int i = -3; i < 3; i++)
+                    Instantiate(torpedo, transform.position + new Vector3(0, i), Quaternion.identity);
 
-    void Discharge()
-    {
-        isDischarge = true;
-
-        for(int i = -3; i < 3; i++)
-        {
-            Instantiate(torpedo, transform.position + new Vector3(0, i), Quaternion.identity);
+                yield return new WaitForSeconds(timeDischargeDelay);
+            }
         }
     }
 
