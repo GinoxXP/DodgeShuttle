@@ -60,6 +60,7 @@ public class Player : MonoBehaviour
 
                 yield return new WaitForSeconds(fireDelayTime);
             }
+			yield return null;
         }
     }
 
@@ -77,6 +78,7 @@ public class Player : MonoBehaviour
 
                 isImmunity = false;
             }
+			yield return null;
         }
     }
 
