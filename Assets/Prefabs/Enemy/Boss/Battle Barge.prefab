@@ -148,7 +148,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92860f73cf230fc9abbfd90ed0c99ecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
+  speedFirstPhase: 0.5
+  speedSecondPhase: 0.8
+  speedThirdPhase: 1
   spaceObject: {fileID: 8150391337113146133}
   hp: 30
   turret1: {fileID: 8150391337277012954}
@@ -157,6 +159,8 @@ MonoBehaviour:
   waypointCount: 6
   leftUpCorner: {x: 10, y: 7}
   rightDownCorner: {x: 12, y: -7}
+  hpBrokenTurret1: 20
+  hpBrokenTurret2: 10
   drop: {fileID: 6822813639384074108}
 --- !u!114 &8150391337113146133
 MonoBehaviour:

@@ -2,34 +2,42 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Torpedo : MonoBehaviour
 {
-    private Transform player;
+    Transform player;
+    Rigidbody2D rb;
 
-    public float speed;
-    public float speedBoost;
+    [SerializeField] float speed;
+    [SerializeField] float speedBoost;
 
-    public float boostDistance;
+    [Space]
+    [SerializeField] float boostDistance;
 
-    public bool isBoost;
+    [Space]
+    [SerializeField] bool isBoost;
 
-    private Rigidbody2D rb;
+    [Space]
+    [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] Sprite boostedTorpedo;
 
-    public SpriteRenderer spriteRenderer;
-    public Sprite boostedTorpedo;
+    [Space]
+    [SerializeField] float guaranteedDestroyTime;
 
     void Start()
     {
-        player = GameObject.FindGameObjectsWithTag("Player")[0].transform;
+        SetTarget();
         rb = GetComponent<Rigidbody2D>();
 
-        Destroy(gameObject, 10);
+        Destroy(gameObject, guaranteedDestroyTime);
     }
 
     void Update()
     {
-        if(player != null)
+        if(player != null && player.gameObject.activeSelf)
             Aim();
+        else
+            SetTarget();
 
         Move();
     }
@@ -42,8 +50,16 @@ public class Torpedo : MonoBehaviour
         transform.rotation = Quaternion.Euler (0f, 0f, rot_Z - 180);
     }
 
+    void SetTarget()
+    {
+        player = GameObject.FindGameObjectsWithTag("Player")[0].transform;
+    }
+
     void Move()
     {
+        if(player == null)
+            return;
+
         float distance = Vector3.Distance(player.position, transform.position);
 
         if(distance <= boostDistance)

@@ -5,19 +5,20 @@ using UnityEngine;
 [RequireComponent(typeof(Weapon))]
 public class PlayerTurret : MonoBehaviour
 {
-    private GameObject[] enemies;
-    private Transform target;
+    GameObject[] enemies;
+    Transform target;
 
-    private Weapon weapon;
+    Weapon weapon;
 
     [Space]
-    public float fireDelayTime;
-    private float fireDelayTimer;
-    private bool isFire;
+    [SerializeField] float fireDelayTime;
+
 
     void Start()
     {
         weapon = GetComponent<Weapon>();
+
+        StartCoroutine(Fire());
     }
 
     void Update()
@@ -27,22 +28,6 @@ public class PlayerTurret : MonoBehaviour
 
         if(enemies.Length > 0)
             Aim();
-
-
-        if(!isFire)
-        {
-            Fire();
-        }
-        else
-        {
-            fireDelayTimer += Time.deltaTime;
-        }
-
-        if(fireDelayTimer >= fireDelayTime)
-        {
-            fireDelayTimer = 0;
-            isFire = false;
-        }
     }
 
     void SetTarget()
@@ -52,6 +37,12 @@ public class PlayerTurret : MonoBehaviour
         float nearDistance = Mathf.Infinity;
         for(int i = 0; i < enemies.Length; i++)
         {
+            if(enemies[i].TryGetComponent(out Mine mine))
+                break;
+
+            if(enemies[i].TryGetComponent(out Bullet bullet))
+                break;
+
             float distance = Vector3.Distance(transform.position, enemies[i].transform.position);
             if(distance < nearDistance)
             {
@@ -63,15 +54,21 @@ public class PlayerTurret : MonoBehaviour
 
     void Aim()
     {
+        if(target == null)
+            return;
+
         Vector3 diff = target.position - transform.position;
         diff.Normalize();
         float rot_Z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler (0f, 0f, rot_Z);
     }
 
-    void Fire()
+    IEnumerator Fire()
     {
-        isFire = true;
-        weapon.Fire();
+        while(true)
+        {
+            if(target != null)
+                weapon.Fire();
+        }
     }
 }

@@ -4,22 +4,25 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
-    private Transform player;
+    Transform player;
 
-    public ParticleSystem particleSystem;
-    public bool isBroken;
+    [SerializeField] ParticleSystem particleSystem;
+    [SerializeField] bool isBroken;
 
-    public Weapon weapon;
+    [Space]
+    [SerializeField] Weapon weapon;
 
     void Start()
     {
-        player = GameObject.FindGameObjectsWithTag("Player")[0].transform;
+        SetTarget();
     }
 
     void Update()
     {
-        if(player != null && !isBroken)
+        if(player != null && player.gameObject.activeSelf && !isBroken)
             Aim();
+        else
+            SetTarget();
     }
 
     void Aim()
@@ -28,6 +31,11 @@ public class Turret : MonoBehaviour
         diff.Normalize();
         float rot_Z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler (0f, 0f, rot_Z - 180);
+    }
+
+    void SetTarget()
+    {
+        player = GameObject.FindGameObjectsWithTag("Player")[0].transform;
     }
 
     public void Fire()

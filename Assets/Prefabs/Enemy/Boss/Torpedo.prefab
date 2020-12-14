@@ -151,3 +151,4 @@ MonoBehaviour:
   spriteRenderer: {fileID: 7334015475946271450}
   boostedTorpedo: {fileID: 2808564263240223317, guid: fc8d29bbd199f882994c5ccdfa14b5cb,
     type: 3}
+  guaranteedDestroyTime: 5

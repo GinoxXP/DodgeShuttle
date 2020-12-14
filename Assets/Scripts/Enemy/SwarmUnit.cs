@@ -2,19 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class SwarmUnit : MonoBehaviour
 {
-    public float speed;
+    [SerializeField] float speed;
 
-    private Rigidbody2D rb;
-    public SpaceObject spaceObject;
+    [Space]
+    Rigidbody2D rb;
+    [SerializeField] SpaceObject spaceObject;
 
-    private float time;
-    public float timeDelay;
+    [Space]
+    float time;
+    [SerializeField] float timeDelay;
 
-    public float amplitudeMultiplier;
+    [Space]
+    [SerializeField] float amplitudeMultiplier;
 
-    public Drop drop;
+    [Space]
+    [SerializeField] Drop drop;
 
     void Start()
     {

@@ -2,35 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Rusher : MonoBehaviour
 {
-    public float speed;
-    public float speedAiming;
+    [SerializeField] float speed;
+    [SerializeField] float speedAiming;
 
-    private Rigidbody2D rb;
-    public SpaceObject spaceObject;
+    Rigidbody2D rb;
+    [SerializeField] SpaceObject spaceObject;
 
-    private Transform player;
+    Transform player;
 
-    public float timeFireDelay;
-    private float timerFireDelay;
-    private bool isFire;
+    [SerializeField] float timeFireDelay;
 
-    public GameObject bullet;
+    [SerializeField] GameObject bullet;
 
-    public int fireCountBeforeRush;
-    private int fireCounter;
+    [SerializeField] int fireCountBeforeRush;
 
-    private bool isRush;
+    bool isRush;
 
-    public Drop drop;
+    [SerializeField] Drop drop;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = new Vector2(-speed * spaceObject.speedMultiplier, 0);
 
-        player = GameObject.FindGameObjectsWithTag("Player")[0].transform;
+        SetTarget();
+
+        StartCoroutine(Fire());
     }
 
     void Update()
@@ -43,29 +43,32 @@ public class Rusher : MonoBehaviour
 
     void Move()
     {
+        Aim();
+    }
+
+    void Aim()
+    {
+        if(player == null || !player.gameObject.activeSelf)
+            SetTarget();
+            
         if(player != null)
-            rb.velocity = new Vector2(rb.velocity.x, player.position.y > transform.position.y ? speedAiming : -speedAiming);
+            rb.velocity = new Vector2(rb.velocity.x,
+                                    (player.position.y > transform.position.y ? speedAiming : -speedAiming) * spaceObject.speedMultiplier);
         else
             rb.velocity = new Vector2(rb.velocity.x, 0);
-
-        if(!isFire)
-            Fire();
-
-        if(isFire)
-            timerFireDelay += Time.deltaTime;
-
-        if(timerFireDelay >= timeFireDelay)
-        {
-            timerFireDelay = 0;
-            isFire = false;
-        }
-
-        if(fireCounter >= fireCountBeforeRush)
-            isRush = true;
     }
 
     void Rush()
     {
+        if(player == null)
+            return;
+
+        if(player.position.x > transform.position.x)
+        {
+            rb.velocity = new Vector2(-speed * spaceObject.speedMultiplier * 6, 0);
+            return;
+        }
+
         var heading = player.position - transform.position;
         var distance = heading.magnitude;
 
@@ -76,12 +79,22 @@ public class Rusher : MonoBehaviour
         }
     }
 
-    void Fire()
+    void SetTarget()
     {
-        GameObject bullet = Instantiate(this.bullet, transform.position, Quaternion.identity);
-        bullet.GetComponent<Bullet>().speedMultiplier = spaceObject.speedMultiplier;
-        isFire = true;
-        fireCounter++;
+        player = GameObject.FindGameObjectsWithTag("Player")[0].transform;
+    }
+
+    IEnumerator Fire()
+    {
+        for(int i = 0; i < fireCountBeforeRush; i++)
+        {
+            GameObject bullet = Instantiate(this.bullet, transform.position, Quaternion.identity);
+            bullet.GetComponent<Bullet>().speedMultiplier = spaceObject.speedMultiplier;
+
+            yield return new WaitForSeconds(timeFireDelay);
+        }
+
+        isRush = true;
     }
 
     void OnTriggerEnter2D(Collider2D col)

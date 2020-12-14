@@ -2,23 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Dragonfly : MonoBehaviour
 {
-    public float speed;
+    [SerializeField] float speed;
 
-    private Rigidbody2D rb;
-    public SpaceObject spaceObject;
+    Rigidbody2D rb;
+    [SerializeField] SpaceObject spaceObject;
 
-    public GameObject mine;
+    [SerializeField] GameObject mine;
 
-    public int waypointCount;
-    private Vector3[] waypoints;
-    private int indexWaypoint;
+    [SerializeField] int waypointCount;
+    Vector3[] waypoints;
+    int indexWaypoint;
 
-    public Vector2 leftUpCorner;
-    public Vector2 rightDownCorner;
+    [SerializeField] Vector2 leftUpCorner;
+    [SerializeField] Vector2 rightDownCorner;
 
-    public Drop drop;
+    [SerializeField] Drop drop;
 
     void Start()
     {
@@ -54,7 +55,7 @@ public class Dragonfly : MonoBehaviour
             Vector3 directionMove = heading / distance;
             rb.velocity = directionMove * speed * spaceObject.speedMultiplier;
 
-            if(distance <= 0.1f)
+            if(distance <= 0.3f)
             {
                 PlantMine();
                 indexWaypoint++;

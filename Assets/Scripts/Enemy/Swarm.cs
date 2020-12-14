@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Swarm : MonoBehaviour
 {
-    public SpaceObject spaceObject;
+    [SerializeField] SpaceObject spaceObject;
 
     void Start()
     {

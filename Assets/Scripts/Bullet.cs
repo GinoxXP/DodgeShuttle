@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Bullet : MonoBehaviour
 {
     public Vector2 velocity;
     public float speedMultiplier = 1;
 
-    private Rigidbody2D rb;
+    Rigidbody2D rb;
 
     void Start()
     {

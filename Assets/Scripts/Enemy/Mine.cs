@@ -2,26 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Mine : MonoBehaviour
 {
-    public bool isActive;
+    [SerializeField] bool isActive;
 
-    public float speed;
+    [SerializeField] float speed;
 
-    private Rigidbody2D rb;
+    Rigidbody2D rb;
     public SpaceObject spaceObject;
 
-    public GameObject bullet;
+    [SerializeField] GameObject bullet;
 
-    public Weapon[] weapons;
+    [SerializeField] Weapon[] weapons;
 
-    public int timeFireDelay;
-    private float timerFireDelay;
-    private bool isFire;
+    [SerializeField] int timeFireDelay;
 
-    public float time;
+    [SerializeField] float time;
 
-    public int rotationDegreeInSecond;
+    [SerializeField] int rotationDegreeInSecond;
 
     void Start()
     {
@@ -30,6 +29,8 @@ public class Mine : MonoBehaviour
 
         for(int i = 0; i < weapons.Length; i++)
             weapons[i].bulletSpeed *= spaceObject.speedMultiplier;
+
+        StartCoroutine(Fire());
     }
 
     void Update()
@@ -37,38 +38,33 @@ public class Mine : MonoBehaviour
         if(isActive)
         {
             transform.Rotate(transform.forward, rotationDegreeInSecond * Time.deltaTime);
-
-            if(!isFire)
-                Fire();
-
-            if(isFire)
-                timerFireDelay += Time.deltaTime;
-
-            if(timerFireDelay >= timeFireDelay)
-            {
-                timerFireDelay = 0;
-                isFire = false;
-            }
         }
     }
 
-    private void Fire()
+    IEnumerator Fire()
     {
-        // GameObject bullet = Instantiate(this.bullet, transform.position, Quaternion.identity);
-        // bullet.GetComponent<Bullet>().speedMultiplier = spaceObject.speedMultiplier;
+        while(true)
+        {
+            if(isActive)
+            {
+                for(int i = 0; i < weapons.Length; i++)
+                    weapons[i].Fire();
 
-        for(int i = 0; i < weapons.Length; i++)
-            weapons[i].Fire();
-        isFire = true;
+                yield return new WaitForSeconds(timeFireDelay);
+            }
+
+            yield return null;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.tag == "Bullet")
+        if(col.TryGetComponent(out Bullet bullet))
         {
-            //spaceObject.Drop();
             isActive = true;
-            Destroy(col.gameObject);
+
+            if(col.tag == "Bullet")
+                Destroy(col.gameObject);
         }
     }
 }

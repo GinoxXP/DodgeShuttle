@@ -4,69 +4,78 @@ using UnityEngine;
 
 public class Defender : MonoBehaviour
 {
-    public float speed;
-    public float speedAiming;
+    [SerializeField] float speed;
+    [SerializeField] float speedAiming;
 
-    private Rigidbody2D rb;
-    public SpaceObject spaceObject;
+    Rigidbody2D rb;
+    [SerializeField] SpaceObject spaceObject;
 
-    private Transform player;
+    Transform player;
 
-    public float timeFireDelay;
-    private float timer;
-    private bool isFire;
+    [SerializeField] float timeFireDelay;
 
-    public GameObject bullet;
+    [SerializeField] GameObject bullet;
 
-    public float lifeTime;
-    private float lifeTimer;
-    private bool isAlive = true;
+    [SerializeField] float lifeTime;
+    bool isAlive = true;
 
-    public Drop drop;
+    [SerializeField] Drop drop;
+
+    Coroutine fireCoroutine;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = new Vector2(-speed * spaceObject.speedMultiplier, 0);
 
-        player = GameObject.FindGameObjectsWithTag("Player")[0].transform;
+        SetTarget();
+
+        fireCoroutine = StartCoroutine(Fire());
+        StartCoroutine(GoHome());
     }
 
     void Update()
     {
         if(isAlive)
-        {
-            if(player != null)
-                rb.velocity = new Vector2(rb.velocity.x, player.position.y > transform.position.y ? speedAiming : -speedAiming);
-            else
-                rb.velocity = new Vector2(rb.velocity.x, 0);
-
-            if(!isFire)
-                Fire();
-
-            if(isFire)
-                timer += Time.deltaTime;
-
-            if(timer >= timeFireDelay)
-            {
-                timer = 0;
-                isFire = false;
-            }
-
-            lifeTimer += Time.deltaTime;
-
-            if(lifeTimer >= lifeTime)
-                isAlive = false;
-        }
+            Aim();
         else
-            rb.velocity = new Vector2(speed*3, 0);
+            rb.velocity = new Vector2(speed*3 * spaceObject.speedMultiplier, 0);
     }
 
-    private void Fire()
+    void Aim()
     {
-        GameObject bullet = Instantiate(this.bullet, transform.position, Quaternion.identity);
-        bullet.GetComponent<Bullet>().speedMultiplier = spaceObject.speedMultiplier;
-        isFire = true;
+        if(player == null || !player.gameObject.activeSelf)
+            SetTarget();
+            
+        if(player != null)
+            rb.velocity = new Vector2(rb.velocity.x,
+                                    (player.position.y > transform.position.y ? speedAiming : -speedAiming) * spaceObject.speedMultiplier);
+        else
+            rb.velocity = new Vector2(rb.velocity.x, 0);
+    }
+
+    void SetTarget()
+    {
+        player = GameObject.FindGameObjectsWithTag("Player")[0].transform;
+    }
+
+    IEnumerator Fire()
+    {
+        while(true)
+        {
+            GameObject bullet = Instantiate(this.bullet, transform.position, Quaternion.identity);
+            bullet.GetComponent<Bullet>().speedMultiplier = spaceObject.speedMultiplier;
+
+            yield return new WaitForSeconds(timeFireDelay);
+        }
+    }
+
+    IEnumerator GoHome()
+    {
+        yield return new WaitForSeconds(lifeTime);
+        isAlive = false;
+
+        StopCoroutine(fireCoroutine);
     }
 
     void OnTriggerEnter2D(Collider2D col)

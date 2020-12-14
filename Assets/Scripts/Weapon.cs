@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    public GameObject bullet;
-    public SpaceObject spaceObject;
+    [SerializeField] GameObject bullet;
+    [SerializeField] SpaceObject spaceObject;
 
     public float bulletSpeed;
 

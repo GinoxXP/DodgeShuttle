@@ -7,22 +7,33 @@ using System.Xml;
 public class ScoreLoger : MonoBehaviour
 {
     public UnityEngine.UI.Text scoreBar;
+    public UnityEngine.UI.Text bestScore;
 
     void Start()
     {
-        string path = "./recordes";
+        string path = "./records";
         if(!File.Exists(path))
-        {
-            using (StreamWriter sw = File.CreateText(path))
-            {
-                sw.WriteLine("<?xml version=\"1.0\" encoding=\"utf-8\" ?>");
-                sw.WriteLine("<recordes>");
-                sw.WriteLine("</recordes>");
-            }
-        }
+            CreateFile(path);
 
+        WritreXML(path);
+
+        GetBestScore(path);
+    }
+
+    void CreateFile(string path)
+    {
+        using (StreamWriter sw = File.CreateText(path))
+        {
+            sw.WriteLine("<?xml version=\"1.0\" encoding=\"utf-8\" ?>");
+            sw.WriteLine("<records>");
+            sw.WriteLine("</records>");
+        }
+    }
+
+    void WritreXML(string path)
+    {
         XmlDocument xDoc = new XmlDocument();
-        xDoc.Load("./recordes");
+        xDoc.Load(path);
         XmlElement xRoot = xDoc.DocumentElement;
             XmlElement scoreElem = xDoc.CreateElement("record");
                 XmlElement scoreAttr = xDoc.CreateElement("score");
@@ -39,6 +50,32 @@ public class ScoreLoger : MonoBehaviour
                 scoreElem.AppendChild(usernameAttr);
             xRoot.AppendChild(scoreElem);
 
-        xDoc.Save("./recordes");
+        xDoc.Save(path);
+    }
+
+    void GetBestScore(string path)
+    {
+        float bestScore = 0;
+
+        XmlDocument xDoc = new XmlDocument();
+        xDoc.Load(path);
+        XmlElement xRoot = xDoc.DocumentElement;
+        foreach(XmlNode xnode in xRoot)
+        {
+            foreach(XmlNode childnode in xnode.ChildNodes)
+            {
+                if(childnode.Name=="score")
+                {
+                    float score = float.Parse(childnode.InnerText);
+
+                    if(score > bestScore)
+                    {
+                        bestScore = score;
+                    }
+                }
+            }
+        }
+
+        this.bestScore.text = bestScore.ToString();
     }
 }

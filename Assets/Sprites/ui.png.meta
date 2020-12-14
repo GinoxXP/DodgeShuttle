@@ -8,6 +8,57 @@ TextureImporter:
   - first:
       213: 3556181715638617739
     second: ui_pause_button
+  - first:
+      213: -5699438545573711276
+    second: panel_n
+  - first:
+      213: 4981589108265164236
+    second: panel_ne
+  - first:
+      213: -8816031292267695619
+    second: panel_s
+  - first:
+      213: 7263181891274304025
+    second: panel_sw
+  - first:
+      213: -7975249404588759376
+    second: panel_e
+  - first:
+      213: -9005941153719796207
+    second: panel_center
+  - first:
+      213: 2163036573998151787
+    second: panel_w
+  - first:
+      213: 8599436577718238185
+    second: ui_7
+  - first:
+      213: -9080700020481880845
+    second: ui_8
+  - first:
+      213: -6774437969098921397
+    second: ui_9
+  - first:
+      213: -7334886338573059942
+    second: logo
+  - first:
+      213: 8852797563311604980
+    second: scorebar
+  - first:
+      213: -7420991742971661633
+    second: pause
+  - first:
+      213: 6071220295474305178
+    second: panel
+  - first:
+      213: 2697481083480110284
+    second: panel_sliced
+  - first:
+      213: -5699438545573711276
+    second: ui_0
+  - first:
+      213: 3556181715638617739
+    second: panel_se
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -93,43 +144,106 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ui_distance_counter
+      name: logo
       rect:
         serializedVersion: 2
         x: 0
-        y: 75
-        width: 248
-        height: 55
+        y: 462
+        width: 940
+        height: 483
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0646e25a3ac143f40800000000000000
-      internalID: 5707218116961789024
+      spriteID: a98bc79acbf353a90800000000000000
+      internalID: -7334886338573059942
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ui_pause_button
+      name: scorebar
       rect:
         serializedVersion: 2
-        x: 255
-        y: 0
-        width: 130
-        height: 130
+        x: 0
+        y: 381
+        width: 248
+        height: 55
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b86016dcd681a5130800000000000000
-      internalID: 3556181715638617739
+      spriteID: 4f4c1adca747bda70800000000000000
+      internalID: 8852797563311604980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pause
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 305
+        width: 131
+        height: 131
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb2311fe357530990800000000000000
+      internalID: -7420991742971661633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: panel
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 155
+        width: 150
+        height: 151
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9853e821be414450800000000000000
+      internalID: 6071220295474305178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: panel_sliced
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 150
+        height: 151
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc4fa29e0c06f6520800000000000000
+      internalID: 2697481083480110284
       vertices: []
       indices: 
       edges: []

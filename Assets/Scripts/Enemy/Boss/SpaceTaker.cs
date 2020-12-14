@@ -2,58 +2,63 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class SpaceTaker : MonoBehaviour
 {
-    public float speed;
+    [SerializeField] float speed;
 
-    public SpaceObject spaceObject;
+    [SerializeField] SpaceObject spaceObject;
 
-    private Rigidbody2D rb;
+    Rigidbody2D rb;
 
-    public int hp;
-    [Space]
-    public ParticleSystem firePoint1;
-    public ParticleSystem firePoint2;
-    public ParticleSystem firePoint3;
-    public ParticleSystem firePoint4;
-    public ParticleSystem firePoint5;
+    [SerializeField] int hp;
 
     [Space]
-    public GameObject asteroid;
-    public float timeDropAsteroidDelay;
-    private float timerDropAsteroidDelay;
-    private bool isDropAsteroid;
-    public Vector3 asteroidSpawnOffset;
+    [SerializeField] ParticleSystem firePoint1;
+    [SerializeField] ParticleSystem firePoint2;
+    [SerializeField] ParticleSystem firePoint3;
+    [SerializeField] ParticleSystem firePoint4;
+    [SerializeField] ParticleSystem firePoint5;
 
     [Space]
-    public GameObject swarmShield;
-    public float timeSwarmShieldDelay;
-    private float timerSwarmShieldDelay;
-    private bool isSwarmShield;
+    [SerializeField] GameObject asteroid;
+    [SerializeField] float timeDropAsteroidDelay;
+    [SerializeField] Vector3 asteroidSpawnOffset;
 
     [Space]
-    public int waypointCount;
-    private Vector3[] waypoints;
-    private int indexWaypoint;
+    [SerializeField] GameObject swarmShield;
+    [SerializeField] float timeSwarmShieldDelay;
 
-    public Vector2 leftUpCorner;
-    public Vector2 rightDownCorner;
+    [Space]
+    [SerializeField] GameObject swarm;
+    [SerializeField] float timeSwarmDelay;
+    [SerializeField] Vector3 swarmSpawnOffset;
+    [SerializeField] int hpSwarmSpawn;
 
-    public Drop drop;
+    [Space]
+    [SerializeField] int waypointCount;
+    Vector3[] waypoints;
+    int indexWaypoint;
+
+    [SerializeField] Vector2 leftUpCorner;
+    [SerializeField] Vector2 rightDownCorner;
+
+    [SerializeField] Drop drop;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         GenerateWayPoint();
+
+        StartCoroutine(SpawnAsteroid());
+        StartCoroutine(MakeSwarmShield());
+        StartCoroutine(SpawnSwarm());
     }
 
 
     void Update()
     {
         Move();
-
-        TryDropAsteroid();
-        TryMakeSwarmShield();
     }
 
     void Move()
@@ -72,67 +77,65 @@ public class SpaceTaker : MonoBehaviour
         }
     }
 
-    void TryDropAsteroid()
+    IEnumerator SpawnAsteroid()
     {
-        if(!isDropAsteroid)
-            DropAsteroid();
-
-        if(isDropAsteroid)
-            timerDropAsteroidDelay += Time.deltaTime;
-
-        if(timerDropAsteroidDelay >= timeDropAsteroidDelay)
+        while(true)
         {
-            timerDropAsteroidDelay = 0;
-            isDropAsteroid = false;
+            for(int i = 0; i < 7; i++)
+            {
+                float randomSpeedY = Random.Range(-3.0f, 3.0f);
+
+                GameObject asteroid = Instantiate(this.asteroid,
+                                                  transform.position + asteroidSpawnOffset,
+                                                  Quaternion.identity);
+
+                Asteroid asteroidComponent = asteroid.GetComponent<Asteroid>();
+                asteroidComponent.speed = new Vector3(-3 * spaceObject.speedMultiplier,
+                                                      randomSpeedY * spaceObject.speedMultiplier);
+            }
+
+            yield return new WaitForSeconds(timeDropAsteroidDelay);
         }
     }
 
-    void DropAsteroid()
+    IEnumerator MakeSwarmShield()
     {
-
-        for(int i = 0; i < 7; i++)
+        while(true)
         {
-            float randomSpeedY = Random.Range(-3.0f, 3.0f);
+            GameObject swarmShield = Instantiate(this.swarmShield,
+                                                 transform.position,
+                                                 Quaternion.identity);
 
-            GameObject asteroid = Instantiate(this.asteroid,
-                                              transform.position + asteroidSpawnOffset,
-                                              Quaternion.identity);
+            swarmShield.GetComponent<SwarmShield>().speed *= spaceObject.speedMultiplier;
 
-            Asteroid asteroidComponent = asteroid.GetComponent<Asteroid>();
-            asteroidComponent.speed = new Vector3(-3 * spaceObject.speedMultiplier,
-                                                  randomSpeedY * spaceObject.speedMultiplier);
-        }
+            swarmShield.transform.parent = transform;
 
-        isDropAsteroid = true;
-
-    }
-
-    void TryMakeSwarmShield()
-    {
-        if(!isSwarmShield)
-            MakeSwarmShield();
-
-        if(isSwarmShield)
-            timerSwarmShieldDelay += Time.deltaTime;
-
-        if(timerSwarmShieldDelay >= timeSwarmShieldDelay)
-        {
-            timerSwarmShieldDelay = 0;
-            isSwarmShield = false;
+            yield return new WaitForSeconds(timeSwarmDelay);
         }
     }
 
-    void MakeSwarmShield()
+    IEnumerator SpawnSwarm()
     {
-        GameObject swarmShield = Instantiate(this.swarmShield,
-                                             transform.position,
-                                             Quaternion.identity);
+        while(true)
+        {
+            if(hp < hpSwarmSpawn)
+            {
+                GameObject swarm = Instantiate(this.swarm,
+                                                  transform.position + swarmSpawnOffset,
+                                                  Quaternion.identity);
 
-        swarmShield.GetComponent<SwarmShield>().speed *= spaceObject.speedMultiplier;
+                for(int i = 0; i < swarm.transform.childCount; i++)
+                {
+                    GameObject swarmUnit = swarm.transform.GetChild(i).gameObject;
 
-        swarmShield.transform.parent = transform;
+                    swarmUnit.GetComponent<SpaceObject>().speedMultiplier = spaceObject.speedMultiplier;
+                }
 
-        isSwarmShield = true;
+                yield return new WaitForSeconds(timeSwarmDelay);
+            }
+
+            yield return null;
+        }
     }
 
     void GenerateWayPoint()
@@ -149,19 +152,19 @@ public class SpaceTaker : MonoBehaviour
 
     void SetStatus()
     {
-        if(hp <= 80)
+        if(hp == 80)
             firePoint1.Play();
 
-        if(hp <= 60)
+        if(hp == 60)
             firePoint2.Play();
 
-        if(hp <= 40)
+        if(hp == 40)
             firePoint3.Play();
 
-        if(hp <= 20)
+        if(hp == 20)
             firePoint4.Play();
 
-        if(hp <= 10)
+        if(hp == 10)
             firePoint5.Play();
     }
 
@@ -172,13 +175,13 @@ public class SpaceTaker : MonoBehaviour
             Destroy(col.gameObject);
 
             hp--;
+            SetStatus();
+
             if(hp <= 0)
             {
                 drop.DropItem(spaceObject.speedMultiplier);
                 Destroy(gameObject);
             }
-
-            SetStatus();
         }
     }
 }

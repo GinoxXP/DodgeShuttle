@@ -6,7 +6,7 @@ public class SpaceObject : MonoBehaviour
 {
     public float speedMultiplier;
 
-    public bool isGroup;
+    [SerializeField] bool isGroup;
 
     void Update()
     {

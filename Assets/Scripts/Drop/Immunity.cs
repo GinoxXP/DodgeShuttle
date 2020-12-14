@@ -9,7 +9,6 @@ public class Immunity : MonoBehaviour
         if(col.tag == "Player")
         {
             Player player = col.GetComponent<Player>();
-
             player.isImmunity = true;
 
             Destroy(gameObject);

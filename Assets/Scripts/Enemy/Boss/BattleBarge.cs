@@ -4,50 +4,53 @@ using UnityEngine;
 
 public class BattleBarge : MonoBehaviour
 {
-    public float speed;
+    float speed;
 
-    public SpaceObject spaceObject;
+    [SerializeField] float speedFirstPhase;
+    [SerializeField] float speedSecondPhase;
+    [SerializeField] float speedThirdPhase;
 
-    private Rigidbody2D rb;
+    [SerializeField] SpaceObject spaceObject;
 
-    public int hp;
+    Rigidbody2D rb;
 
-    public Turret turret1;
-    public Turret turret2;
+    [SerializeField] int hp;
 
-    public float timeFireDelay;
-    private float timerFireDelay;
-    private bool isFire;
+    [Space]
+    [SerializeField] Turret turret1;
+    [SerializeField] Turret turret2;
 
-    public int waypointCount;
-    private Vector3[] waypoints;
-    private int indexWaypoint;
+    [Space]
+    [SerializeField] float timeFireDelay;
 
-    public Vector2 leftUpCorner;
-    public Vector2 rightDownCorner;
+    [Space]
+    [SerializeField] int waypointCount;
+    Vector3[] waypoints;
+    int indexWaypoint;
 
-    public Drop drop;
+    [Space]
+    [SerializeField] Vector2 leftUpCorner;
+    [SerializeField] Vector2 rightDownCorner;
+
+    [Space]
+    [SerializeField] int hpBrokenTurret1;
+    [SerializeField] int hpBrokenTurret2;
+
+    [Space]
+    [SerializeField] Drop drop;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         GenerateWayPoint();
+
+        speed = speedFirstPhase;
+
+        StartCoroutine(Fire());
     }
 
     void Update()
     {
-        if(!isFire)
-            Fire();
-
-        if(isFire)
-            timerFireDelay += Time.deltaTime;
-
-        if(timerFireDelay >= timeFireDelay)
-        {
-            timerFireDelay = 0;
-            isFire = false;
-        }
-
         Move();
     }
 
@@ -79,21 +82,32 @@ public class BattleBarge : MonoBehaviour
         }
     }
 
-    void Fire()
+    IEnumerator Fire()
     {
-        isFire = true;
+        while(true)
+        {
+            turret1.Fire();
+            turret2.Fire();
 
-        turret1.Fire();
-        turret2.Fire();
+            yield return new WaitForSeconds(timeFireDelay);
+        }
     }
 
     void SetStatus()
     {
-        if(hp <= 20)
+        if(hp <= hpBrokenTurret1)
+        {
             turret1.MakeBroken();
 
-        if(hp <= 10)
+            speed = speedSecondPhase;
+        }
+
+        if(hp <= hpBrokenTurret2)
+        {
             turret2.MakeBroken();
+
+            speed = speedThirdPhase;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D col)

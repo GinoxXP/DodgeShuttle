@@ -9,7 +9,6 @@ public class RepairKit : MonoBehaviour
         if(col.tag == "Player")
         {
             Player player = col.GetComponent<Player>();
-
             player.isBroken = false;
             player.SetStatus();
 
