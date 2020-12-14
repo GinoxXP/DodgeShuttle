@@ -118,6 +118,8 @@ public class Hexon : MonoBehaviour
 
                 yield return new WaitForSeconds(timeDischargeDelay);
             }
+
+            yield return null;
         }
     }
 

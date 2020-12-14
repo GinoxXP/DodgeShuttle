@@ -102,7 +102,7 @@ public class BattleBarge : MonoBehaviour
             speed = speedSecondPhase;
         }
 
-        if(hp <= hpBrokenTurret1)
+        if(hp <= hpBrokenTurret2)
         {
             turret2.MakeBroken();
 

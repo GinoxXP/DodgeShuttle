@@ -29,6 +29,8 @@ public class Mine : MonoBehaviour
 
         for(int i = 0; i < weapons.Length; i++)
             weapons[i].bulletSpeed *= spaceObject.speedMultiplier;
+
+        StartCoroutine(Fire());
     }
 
     void Update()
@@ -50,6 +52,8 @@ public class Mine : MonoBehaviour
 
                 yield return new WaitForSeconds(timeFireDelay);
             }
+
+            yield return null;
         }
     }
 

@@ -133,6 +133,8 @@ public class SpaceTaker : MonoBehaviour
 
                 yield return new WaitForSeconds(timeSwarmDelay);
             }
+
+            yield return null;
         }
     }
 
