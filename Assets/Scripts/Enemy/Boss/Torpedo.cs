@@ -26,7 +26,7 @@ public class Torpedo : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindGameObjectsWithTag("Player")[0].transform;
+        SetTarget();
         rb = GetComponent<Rigidbody2D>();
 
         Destroy(gameObject, guaranteedDestroyTime);
@@ -34,8 +34,10 @@ public class Torpedo : MonoBehaviour
 
     void Update()
     {
-        if(player != null)
+        if(player != null && player.gameObject.activeSelf)
             Aim();
+        else
+            SetTarget();
 
         Move();
     }
@@ -46,6 +48,11 @@ public class Torpedo : MonoBehaviour
         diff.Normalize();
         float rot_Z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler (0f, 0f, rot_Z - 180);
+    }
+
+    void SetTarget()
+    {
+        player = GameObject.FindGameObjectsWithTag("Player")[0].transform;
     }
 
     void Move()

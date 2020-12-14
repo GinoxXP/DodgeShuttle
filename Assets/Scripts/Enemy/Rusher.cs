@@ -28,7 +28,7 @@ public class Rusher : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = new Vector2(-speed * spaceObject.speedMultiplier, 0);
 
-        player = GameObject.FindGameObjectsWithTag("Player")[0].transform;
+        SetTarget();
 
         StartCoroutine(Fire());
     }
@@ -48,6 +48,9 @@ public class Rusher : MonoBehaviour
 
     void Aim()
     {
+        if(player == null || !player.gameObject.activeSelf)
+            SetTarget();
+            
         if(player != null)
             rb.velocity = new Vector2(rb.velocity.x,
                                     (player.position.y > transform.position.y ? speedAiming : -speedAiming) * spaceObject.speedMultiplier);
@@ -74,6 +77,11 @@ public class Rusher : MonoBehaviour
             Vector3 directionMove = heading / distance;
             rb.velocity = directionMove * speed * spaceObject.speedMultiplier * 3;
         }
+    }
+
+    void SetTarget()
+    {
+        player = GameObject.FindGameObjectsWithTag("Player")[0].transform;
     }
 
     IEnumerator Fire()
